@@ -1,0 +1,44 @@
+//Base Member Focus
+S Rank (inc pity)   1.9%
+S rank (base drop)  0.5%
+B or A construct    13.95%
+Construct shard     22.11%
+4* equipment        28.39%
+Overclock material  14.42%
+EXP material        4.81%
+Cog Box             14.42%
+
+//Target Weapon
+Rate up 6* weapon   4%
+Rate up 5* weapon   12%
+Offrate 6* weapon1  0.5%
+Offrate 5* weapon1  1.5%
+Offrate 6* weapon2  0.5%
+Offrate 5* weapon2  1.5%
+4* weapon           33.4%
+3* weapon           27.9%
+Cog Box             9.35%
+Overclock material  9.35%
+
+//Weapon Research
+6* weapon           5%
+5* weapon           15%
+4* weapon           33.4%
+3* weapon           27.9%
+Cog Box             9.35%
+Overclock material  9.35%
+
+//Arrival (double rate up, implementing at a future date)
+Same as Member Focus
+
+//Fate Arrival
+Random pity
+Same as Member Research but S rank construct (base drop) is 1.5%
+
+//Transcendant
+S rank Transcendant (pity)      12.45%
+S rank Transcendant (base drop) 5%
+4* equipment                    28.21%
+Overclock material              26.45%
+EXP material                    6.44%
+Cog Box                         26.45%
