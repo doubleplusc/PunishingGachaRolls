@@ -1,0 +1,31 @@
+//https://stackoverflow.com/questions/19706046/how-to-read-an-external-local-json-file-in-javascript
+//https://stackoverflow.com/questions/18417114/add-item-to-dropdown-list-in-html-using-javascript
+
+let baseRecruitData = JSON.parse(unitData);
+const bannerTargetSelect = document.getElementById(`select-target`);
+let baseMemberA = baseRecruitData[`aConstructs`];
+let options = [];
+let option = document.createElement(`option`);
+option.text = `Select`;
+options.push(option.outerHTML);
+for(aRank of baseMemberA){
+  option.text = option.value = aRank[`frame`];
+  options.push(option.outerHTML);
+}
+bannerTargetSelect.insertAdjacentHTML(`beforeEnd`, options.join(`\n`));
+
+bannerTargetSelect.addEventListener(`change`, changeTargetImage);
+//need to programmatically set the selectable targets for the different banners. Can use a single helper function that uses callbacks on the different banners to generate
+
+function changeTargetImage(e){
+  let choice = e.target.value;
+  let choiceImage = document.getElementById(`select-target-image`);
+  if(choice !== `Select`){
+    choiceImage.setAttribute(`src`, `./assets/units/${choice}.png`);
+    choiceImage.style.opacity = 100; //there has to be a smarter way to hide the picture when the choice is select?
+  }
+  else{
+    choiceImage.setAttribute(`src`, `./assets/units/${choice}.png`);
+    choiceImage.style.opacity = 0;
+  }
+}
