@@ -1,9 +1,8 @@
 //https://stackoverflow.com/questions/19706046/how-to-read-an-external-local-json-file-in-javascript
 //https://stackoverflow.com/questions/18417114/add-item-to-dropdown-list-in-html-using-javascript
 
-let baseRecruitData = JSON.parse(unitData);
 const bannerTargetSelect = document.getElementById(`select-target`);
-let baseMemberA = baseRecruitData[`aConstructs`];
+let baseMemberA = unitData[`aConstruct`];
 let options = [];
 let option = document.createElement(`option`);
 option.text = `Select`;

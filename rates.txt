@@ -1,3 +1,5 @@
+Don't include the pity in the tables, since that percentage is "built into" the pity mechanic and is not actually part of the drop table.
+
 //Base Member Focus
 S Rank (inc pity)   1.9%
 S rank (base drop)  0.5%
@@ -8,6 +10,14 @@ Overclock material  14.42%
 EXP material        4.81%
 Cog Box             14.42%
 
+//Weapon Research
+6* weapon           5%
+5* weapon           15%
+4* weapon           33.4%
+3* weapon           27.9%
+Cog Box             9.35%
+Overclock material  9.35%
+
 //Target Weapon
 Rate up 6* weapon   4%
 Rate up 5* weapon   12%
@@ -15,14 +25,6 @@ Offrate 6* weapon1  0.5%
 Offrate 5* weapon1  1.5%
 Offrate 6* weapon2  0.5%
 Offrate 5* weapon2  1.5%
-4* weapon           33.4%
-3* weapon           27.9%
-Cog Box             9.35%
-Overclock material  9.35%
-
-//Weapon Research
-6* weapon           5%
-5* weapon           15%
 4* weapon           33.4%
 3* weapon           27.9%
 Cog Box             9.35%

@@ -1,22 +1,22 @@
-const bannerData=`{
-  "baseMemberRecruit": {
+const bannerData={
+  "baseMember": {
     "name": "Base Member Recruit",
-    "rateUpPool": "aConstructs",
+    "rateUpPool": "aConstruct",
     "rateUpChance": 80,
   },
-  "baseWeaponResearch":{
+  "baseWeapon":{
     "name": "Base Weapon Research",
-    "rateUpPool": "none",
+    "rateUpPool": "weapons",
     "rateUpChance": 0,
   },
-  "targetedWeaponDevelopment":{
-    "name": "Targeted Weapon Development",
+  "targetWeapon":{
+    "name": "Target Weapon Research",
     "rateUpPool": "weapons",
     "rateUpChance": 80,
   },
-  "transcendantRecruit":{
+  "transcendant":{
     "name": "Transcendants",
     "rateUpPool": "transcendants",
     "rateUpChance": 80,
   },
-}`;
+};

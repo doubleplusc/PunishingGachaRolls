@@ -1,75 +1,83 @@
 const weaponData={
 
-  "sixStarWeapons": {
-    "wolfFang": ["WolfFang", "BerserkFusion", "Benediction"],
-    "zeroScale": ["ZeroScale", "BerserkFusion", "Benediction"],
-    "scion": ["Scion", "HydroHeat", "Sakura"],
+  "sixStarWeapon": {
+    "wolfFang": ["WolfFang", "BerserkFusion", "Benediction", "Gloomlight"],
+    "zeroScale": ["ZeroScale", "BerserkFusion", "Benediction", "Gloomlight"],
+    "scion": ["Scion", "HydroHeat", "Sakura", "Gloomlight"],
 
-    "lotusBerserker": ["LotusBerserker", "SoulRipper", "Darkness"],
-    "inverseShadow": ["InverseShadow", "InverseChimera", "BigKamui"],
-    "sakura": ["Sakura", "WolfFang", "TypeZero"],
-    "crimsonBirch": ["CrimsonBirch", "HydroHeat", "FusionDragon"],
-    "sariel": ["Sairel", "StElmo", "Tonitrus"],
+    "lotusBerserker": ["LotusBerserker", "SoulRipper", "Darkness", "KujiNoSada"],
+    "inverseShadow": ["InverseShadow", "InverseChimera", "BigKamui", "KujiNoSada"],
+    "sakura": ["Sakura", "WolfFang", "TypeZero", "KujiNoSada"],
+    "crimsonBirch": ["CrimsonBirch", "HydroHeat", "FusionDragon", "KujiNoSada"],
+    "sariel": ["Sairel", "StElmo", "Tonitrus", "KujiNoSada"],
 
-    "typeZero": ["TypeZero", "Ramiel", "BerserkFusion"],
-    "benediction": ["Benediction", "WolfFang", "LotusBerserker"],
-    "dragonWind": ["DragonWind", "BigKamui", "Ramiel"],
+    "typeZero": ["TypeZero", "Ramiel", "BerserkFusion", "GuardianMount"],
+    "benediction": ["Benediction", "WolfFang", "LotusBerserker", "GuardianMount"],
+    "dragonWind": ["DragonWind", "BigKamui", "Ramiel", "GuardianMount"],
 
-    "ramiel": ["Ramiel", "LotusBerserker", "SoulRipper"],
-    "tonitrus": ["Tonitrus", "FusionDragon", "PurplePeony"],
+    "ramiel": ["Ramiel", "LotusBerserker", "SoulRipper", "FalconE3320"],
+    "tonitrus": ["Tonitrus", "FusionDragon", "PurplePeony", "FalconE3320"],
 
-    "inverseChima": ["InverseChimera", "InverseShadow", "SoulRipper"],
-    "hydroHeat": ["HydroHeat", "Darkness", "SoulRipper"],
+    "inverseChimera": ["InverseChimera", "InverseShadow", "SoulRipper", "LightningSpark"],
+    "hydroHeat": ["HydroHeat", "Darkness", "SoulRipper", "LightningSpark"],
 
-    "darkness": ["Darkness", "Benediction", "InverseChimera"],
-    "bigKamui": ["BigKamui", "TypeZero", "WolfFang"],
+    "darkness": ["Darkness", "Benediction", "InverseChimera", "DynamoGreatsword"],
+    "bigKamui": ["BigKamui", "TypeZero", "WolfFang", "DynamoGreatsword"],
 
-    "berserkFusion": ["BerserkFusion", "DragonWind", "InverseShadow"],
-    "fusionDragon": ["FusionDragon", "DragonWind", "InverseShadow"],
+    "berserkFusion": ["BerserkFusion", "DragonWind", "InverseShadow", "MagmaPillar"],
+    "fusionDragon": ["FusionDragon", "DragonWind", "InverseShadow", "MagmaPillar"],
 
-    "soulRipper": ["SoulRipper", "Darkness", "TypeZerp"],
-    "peacemaker": ["Peacemaker", "FusionDragon", "HydroHeat"],
+    "soulRipper": ["SoulRipper", "Darkness", "TypeZero", "StoneHeart"],
+    "peacemaker": ["Peacemaker", "FusionDragon", "HydroHeat", "StoneHeart"],
 
-    "purplePeony": ["PurplePeony", "BigKamui", "Ramiel"],
-    "stElmo": ["StElmo", "Peacemaker", "Scion"],
-    "galatea": ["Galatea", "Apollo", "MistressOfTheWoods"],
+    "purplePeony": ["PurplePeony", "BigKamui", "Ramiel", "FadedColor"],
+    "stElmo": ["StElmo", "Peacemaker", "Scion", "FadedColor"],
+    "galatea": ["Galatea", "Apollo", "MistressOfTheWoods", "FadedColor"],
 
-    "gungnir": ["Gungnir", "Crimson Birch", "ZeroScale"],
+    "gungnir": ["Gungnir", "Crimson Birch", "ZeroScale", "RL03CBlackSpike"],
 
-    "baji": ["Baji", "Benediction", "Tonitrus"],
+    "baji": ["Baji", "Benediction", "Tonitrus", "WhiteQilin"],
 
-    "ozma": ["Ozma", "Gungnir", "PurplePeony"],
+    "ozma": ["Ozma", "Gungnir", "PurplePeony", "CrownLure"],
 
-    "auncel": ["Auncel", "Peacemaker", "CrimsonBirch"],
+    "auncel": ["Auncel", "Peacemaker", "CrimsonBirch", "FA2DAP"],
 
-    "apollo": ["Apollo", "Sariel", "Gungnir"],
+    "apollo": ["Apollo", "Sariel", "Gungnir", "KalaType1Gunblade"],
 
-    "growl": ["Growl", "StElmo", "Ozma"],
+    "growl": ["Growl", "StElmo", "Ozma", "Animus"],
 
-    "phoenix": ["Phoenix", "Apollo", "Baji"],
+    "phoenix": ["Phoenix", "Apollo", "Baji", "CrimsonKnight"],
 
-    "hestia": ["Hestia", "Growl", "Ozma"],
+    "hestia": ["Hestia", "Growl", "Ozma", "BipolarStar"],
 
-    "sarastro": ["Sarastro", "Auncel", "Durandel"],
+    "sarastro": ["Sarastro", "Auncel", "Durandel", "NeopolitanSolo"],
 
-    "implosion": ["Implosion", "Sarastro", "Qinghe"],
+    "implosion": ["Implosion", "Sarastro", "Qinghe", "Redshift"],
 
-    "thanatos": ["Thanatos", "Peacemaker", "Scion"],
+    "silentFlash": ["SilentFlash", "Baji", "Hestia", "DireCrusher"],
 
-    "qinghe": ["Qinghe", "Thanatos", "Sariel"],
+    //transcendant only weapons
+    "thanatos": ["Thanatos", "Peacemaker", "Scion", "Glimpse"],
 
-    "mistressOfTheWoods": ["MistressOfTheWoods", "InverseChimera", "Sakura"],
+    "qinghe": ["Qinghe", "Thanatos", "Sariel", "Guiyun"],
 
-    "durandal": ["Durandal", "Qinghe", "MistressOfTheWoods"],
+    "mistressOfTheWoods": ["MistressOfTheWoods", "InverseChimera", "Sakura", "Odette"],
 
-    "boundless": ["Boundless", "Thanatos", "Phoenix"],
+    "durandal": ["Durandal", "Qinghe", "MistressOfTheWoods", "ComplexRoses"],
 
-    "virtuousContractKai": ["VirtuousContractKai"],
+    "boundless": ["Boundless", "Thanatos", "Phoenix", "FrostRuler"],
 
-    "type4OLanceKai": ["Type4OLanceKai"],
+    //Nier
+    "virtuousContractKai": ["VirtuousContractKai", "Type4OLanceKai", "CruelOathKai", "VirtuousContract"],
 
-    "cruelOathKai": ["CruelOathKai"],
+    "type4OLanceKai": ["Type4OLanceKai", "VirtuousContractKai", "CruelOathKai", "Type4OLance"],
+
+    "cruelOathKai": ["CruelOathKai", "VirtuousContractKai", "Type4OLanceKai", "CruelOath"],
   },
 
-  "fiveStarWeapons": ["Gloomlight", "KujiNoSada", "GuardianMount", "FalconE3320", "LightningSpark", "DynamoGreatsword", "MagmaPillar", "StoneHeart", "FadedColor", "RL03CBlackSpike", "WhiteQilin", "CrownLure", "FA2DAP", "KalaType1Gunblade", "Animus", "CrimsonKnight", "BipolarStar", "NeopolitanSolo", "Redshift"]
+  "fiveStarWeapon": ["Gloomlight", "KujiNoSada", "GuardianMount", "FalconE3320", "LightningSpark", "DynamoGreatsword", "MagmaPillar", "StoneHeart", "FadedColor", "RL03CBlackSpike", "WhiteQilin", "CrownLure", "FA2DAP", "KalaType1Gunblade", "Animus", "CrimsonKnight", "BipolarStar", "NeopolitanSolo", "Redshift", "DireCrusher", "Glimpse", "Guiyun", "Odette", "ComplexRoses", "FrostRuler", "CruelOath", "VirtuousContract", "Type4OLance"],
+
+  "fourStarWeapon": ["Tokarev", "UnbrandedBlade", "FishMount", "PulleyBow", "Noise", "Suppressor", "RifledGun", "HunterKnife", "BleakScythe", "AstrayExplorer", "ArmorBreakTypeIX", "Genesis", "BulletAnt", "StandardGunblade", "Collaborator", "TassledBannerSpear", "Apocalypse", "BaselineModus", "FuriousGale", "PrototypeSledgehammerModel", "Photophage", "IronStarTypeVI", "Overture", "Groundbreaker", "Greysteel"],
+  "threeStarWeapon": ["StandardPistol", "CombatKnife", "SemiAutoTurret", "PracticeBow", "Chainsaw", "Greatsword", "Bazooka", "Machete", "StandardScythe"],
+  "twoStarWeapon": ["StandardKnife", "Levitator"],
 }
