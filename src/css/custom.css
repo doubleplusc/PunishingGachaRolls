@@ -13,8 +13,8 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px; 
+  grid-column-gap: 10px;
+  grid-row-gap: 10px; 
   height: 50%;
   width: 50%;
 }
@@ -29,3 +29,40 @@
 .div8 { grid-area: 2 / 3 / 3 / 4; }
 .div9 { grid-area: 2 / 4 / 3 / 5; }
 .div10 { grid-area: 2 / 5 / 3 / 6; } 
+/* 
+div.itemDisplay {
+  border: 5px solid;
+}
+
+div.cogs, div.exp, div.overclock, div.constructShard, div.fourStarEquipment{
+  border-color: #cb68c2;
+}
+
+div.aConstruct, div.bConstruct, div.bOrAConstruct {
+  border-color: #ff8d1c;
+}
+
+div.sConstruct {
+  border-color: #fb5824;
+} */
+
+img.itemDisplay {
+  border: 5px solid;
+}
+
+img.cogs, img.exp, img.overclock, img.constructShard, img.fourStarEquipment{
+  border-color: #cb68c2;
+}
+
+img.aConstruct, img.bConstruct, img.bOrAConstruct {
+  border-color: #ff8d1c;
+}
+
+img.sConstruct {
+  border-color: #fb5824;
+}
+
+
+img.constructShard {
+  filter: sepia(100);
+}

@@ -1,7 +1,7 @@
 *.code-workspace
 extractUnitInfo.js
 .pnpm*
-pnpm*
+pnpm-lock.yaml
 *eslintrc*
 /node_modules
 /ignore
