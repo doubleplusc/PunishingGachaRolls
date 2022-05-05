@@ -30,7 +30,7 @@ Offrate 5* weapon2  1.5%
 Cog Box             9.35%
 Overclock material  9.35%
 
-//Arrival (double rate up, implementing at a future date)
+//Arrival (Confirm rates. Just allow selectable S rate up)
 Same as Member Focus
 
 //Fate Arrival

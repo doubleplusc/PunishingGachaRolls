@@ -1,2 +1,8 @@
 *.code-workspace
 extractUnitInfo.js
+.pnpm*
+pnpm*
+*eslintrc*
+/node_modules
+/ignore
+.parcel-cache/
