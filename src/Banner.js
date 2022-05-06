@@ -34,13 +34,9 @@ class Banner {
       // use a map on currentRolls with roll1
       let dropObj = this.roll1();
       let imageDiv = document.createElement(`div`);
-      imageDiv.setAttribute(
-        `class`,
-        `div${ind} ${dropObj.category} itemDisplay`
-      );
+      imageDiv.setAttribute(`class`, `${dropObj.category} itemDisplay`);
       let dropImage = document.createElement(`img`);
       dropImage.setAttribute(`src`, `${dropObj.drop.assetPath}`);
-      dropImage.setAttribute(`class`, `${dropObj.category} itemDisplay`);
       imageDiv.appendChild(dropImage);
       parent.appendChild(imageDiv);
     }
