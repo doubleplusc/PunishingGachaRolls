@@ -5,10 +5,14 @@ class Banner {
 
   currentSixStarPity;
 
+  sixStarPityType;
+
   fiveStarPity; // either A rank or 5* weapon
 
   currentFiveStarPity;
 
+  fiveStarPityType;
+  
   rateUpPercent;
 
   rateUpSelection;
@@ -20,6 +24,10 @@ class Banner {
     this.parseData();
     this.fiveStarPity = 10;
     this.currentFiveStarPity = 0;
+    this.fiveStarPityType = 'aConstruct';
+    this.sixStarPity = 60;
+    this.currentSixStarPity = 0;
+    this.sixStarPityType = `sConstruct`;
   }
 
   parseData() {
@@ -37,30 +45,46 @@ class Banner {
       imageDiv.setAttribute(`class`, `${dropObj.category} itemDisplay`);
       let dropImage = document.createElement(`img`);
       dropImage.setAttribute(`src`, `${dropObj.drop.assetPath}`);
+      dropImage.setAttribute(`class`, `${dropObj.category}`);
       imageDiv.appendChild(dropImage);
       parent.appendChild(imageDiv);
     }
+    this.currentRolls = parent;
     let domParent = document.querySelector(`.parent2`);
     domParent.replaceChildren(...parent.childNodes);
   }
-
+  checkPity(drop, category){
+    //need to override for weapon and transcendant banners
+    if(drop.rank === `A` && category !== `constructShard`){
+      this.currentFiveStarPity = 0;
+    }
+    else if(drop.rank === `S` && category !== `constructShard`){
+      this.currentFiveStarPity = 0;
+      this.currentSixStarPity = 0;
+    }
+  }
   roll1() {
-    if (
-      true
-      // this.currentFiveStarPity !== this.fiveStarPity &&
-      // this.currentSixStarPity !== this.fiveStarPity
-    ) {
-      let category = chance.weighted(
+    let drop;
+    let category;
+    this.currentFiveStarPity++;
+    this.currentSixStarPity++;
+    if(this.currentFiveStarPity === this.fiveStarPity){
+      drop = database.pickOneFromSpecificCategory(this.fiveStarPityType);
+      category = this.fiveStarPityType;
+    }
+    else if(this.currentSixStarPity === this.sixStarPity){
+      drop = database.pickOneFromSpecificCategory(this.sixStarPityType);
+      category = this.sixStarPityType;
+    }
+    else{
+      category = chance.weighted(
         dropTables[this.bannerType].items,
         dropTables[this.bannerType].rates
       );
-      return {
-        drop: database.pickOneFromCategory(category),
-        category,
-      };
+      drop = database.pickOneFromCategory(category);
     }
-
-    // pick pity
+    this.checkPity(drop, category);
+    return { drop, category };
   }
 
   pickPity() {

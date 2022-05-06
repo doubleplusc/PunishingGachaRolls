@@ -23,13 +23,13 @@ class ItemDatabase {
       case `constructShard`:
         drop = chance.pickone(this.lists[category]);
         name = drop.frame;
-        return { name, assetPath: `${unitData.assetPath}${name}.png` };
+        return { name, assetPath: `${unitData.assetPath}${name}.png`, rank: drop.rank };
       case `aConstruct`:
       case `sConstruct`:
       case `transcendant`:
         drop = chance.pickone(unitData[category]);
         name = drop.frame;
-        return { name, assetPath: `${unitData.assetPath}${name}.png` };
+        return { name, assetPath: `${unitData.assetPath}${name}.png`, rank: drop.rank };
       case `sixStarWeapon`:
         drop = chance.pickone(weaponData[category]);
         name = Object.values(drop)[0];
@@ -48,7 +48,31 @@ class ItemDatabase {
         return { name: drop, assetPath: `${itemData.assetPath}${drop}.png` };
       default:
         console.log(
-          `${category} is not a valid category. Please create an issue`
+          `pickOneFromCategory: ${category} is not a valid category. Please create an issue`
+        );
+        break;
+    }
+  }
+  pickOneFromSpecificCategory(category){
+    //specifically for picking pity drops
+    let drop;
+    let name;
+    switch(category){
+      case `bOrAConstruct`:
+      case `aConstruct`:
+      case `sConstruct`:
+      case `transcendant`:
+        drop = chance.pickone(unitData[category]);
+        name = drop.frame;
+        return { name, assetPath: `${unitData.assetPath}${name}.png`, rank: drop.rank };
+      case `fiveStarWeapon`:
+      case `sixStarWeapon`:
+        drop = chance.pickone(weaponData[category]);
+        name = Object.values(drop)[0];
+        return { name, assetPath: `${weaponData.assetPath}${name}.png` };
+      default:
+        console.log(
+          `pickOneFromSpecificCategory: ${category} is not a valid category. Please create an issue`
         );
         break;
     }
