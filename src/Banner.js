@@ -52,6 +52,7 @@ class Banner {
     this.currentRolls = parent;
     let domParent = document.querySelector(`.parent2`);
     domParent.replaceChildren(...parent.childNodes);
+    pityCounter.innerText = `Pity: ${this.currentSixStarPity}`;
   }
   checkPity(drop, category){
     //need to override for weapon and transcendant banners

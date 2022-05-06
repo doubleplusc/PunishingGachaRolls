@@ -5,6 +5,7 @@ const bannerTargetSelect = document.getElementById(`select-target`);
 let baseMemberA = unitData.aConstruct;
 let options = [];
 let option = document.createElement(`option`);
+let pityCounter = document.getElementById(`pityCounter`);
 option.text = `Select`;
 options.push(option.outerHTML);
 for (aRank of baseMemberA) {
