@@ -28,6 +28,7 @@ class Banner {
     this.sixStarPity = 60;
     this.currentSixStarPity = 0;
     this.sixStarPityType = `sConstruct`;
+    this.rateUpPercent = 70;
   }
 
   parseData() {
@@ -70,11 +71,11 @@ class Banner {
     this.currentFiveStarPity++;
     this.currentSixStarPity++;
     if(this.currentFiveStarPity === this.fiveStarPity){
-      drop = database.pickOneFromSpecificCategory(this.fiveStarPityType);
+      drop = database.pickOneFromCategory(this.fiveStarPityType);
       category = this.fiveStarPityType;
     }
     else if(this.currentSixStarPity === this.sixStarPity){
-      drop = database.pickOneFromSpecificCategory(this.sixStarPityType);
+      drop = database.pickOneFromCategory(this.sixStarPityType);
       category = this.sixStarPityType;
     }
     else{
@@ -87,10 +88,31 @@ class Banner {
     this.checkPity(drop, category);
     return { drop, category };
   }
-
-  pickPity() {
-    // 0 for onbanner selection, 1 for offrate1, 2 for offrate2
-    return chance.integer({ min: 0, max: 2 });
+  isSuccessRateUp(){
+    //weapon banner must override to deal with different rates
+    let random = chance.natural({max: 100});
+    return random >= this.rateUpPercent;
+  }
+  pickPityDrop(){
+    //weapon banner must override to deal with offrates
+  }
+  pickPity(pityCategory) {
+    let getSelectedRateUp = this.isSuccessRateUp();
+    if(this.rateUpSelection && getSelectedRateUp){
+      //rate up is not a lie
+      return database.pickSpecificDrop();
+    }
+    else if(this.rateUpSelection && !getSelectedRateUp){
+      //rate up is a lie
+      let drop = database.pickOneFromCategory(pityCategory);
+      while(drop.name === this.rateUpSelection){
+        drop = database.pickOneFromCategoryWithoutRateUp();
+      }
+    }
+    else{
+      //no rate up
+      return database.pickOneFromCategory(pityCategory);
+    }
   }
 
   clearStats() {

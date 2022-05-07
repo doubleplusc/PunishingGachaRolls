@@ -1,80 +1,62 @@
 class ItemDatabase {
-  lists;
-
+  lookupTable;
   constructor() {
-    // Creates and saves custom lists, e.g. bOrAConstruct, constructShard, etc. Must be a category with filterable parameters.
-    // Additionally, if the requested category does not need a custom table, redirect to the corresponding object
-    this.generateCustomLists();
+    this.generateLookupTable();
   }
-
-  generateCustomLists() {
-    this.lists = {};
-    this.lists.bOrAConstruct = unitData.bConstruct.concat(unitData.aConstruct);
-    this.lists.constructShard = this.lists.bOrAConstruct.concat(
-      unitData.sConstruct
-    );
-  }
-
-  pickOneFromCategory(category) {
-    let drop;
-    let name;
-    switch (category) {
+  categoryToClass(category){
+    switch(category){
       case `bOrAConstruct`:
+        return BOrAConstructSelector;
       case `constructShard`:
-        drop = chance.pickone(this.lists[category]);
-        name = drop.frame;
-        return { name, assetPath: `${unitData.assetPath}${name}.png`, rank: drop.rank };
+        return ConstructShardSelector;
+      case `bConstruct`:
       case `aConstruct`:
       case `sConstruct`:
       case `transcendant`:
-        drop = chance.pickone(unitData[category]);
-        name = drop.frame;
-        return { name, assetPath: `${unitData.assetPath}${name}.png`, rank: drop.rank };
+        return ConstructSelector;
       case `sixStarWeapon`:
-        drop = chance.pickone(weaponData[category]);
-        name = Object.values(drop)[0];
-        return { name, assetPath: `${weaponData.assetPath}${name}.png` };
       case `fiveStarWeapon`:
       case `fourStarWeapon`:
       case `threeStarWeapon`:
       case `twoStarWeapon`:
-        drop = chance.pickone(weaponData[category]);
-        return { name: drop, assetPath: `${weaponData.assetPath}${name}.png` };
+        return WeaponSelector;
       case `cogs`:
       case `exp`:
       case `overclock`:
       case `fourStarEquipment`:
-        drop = chance.pickone(itemData[category]);
-        return { name: drop, assetPath: `${itemData.assetPath}${drop}.png` };
+        return ItemSelector;
       default:
         console.log(
-          `pickOneFromCategory: ${category} is not a valid category. Please create an issue`
+          `categoryToClass: ${category} is not a valid category. Please create an issue.`
         );
         break;
     }
   }
-  pickOneFromSpecificCategory(category){
-    //specifically for picking pity drops
-    let drop;
-    let name;
-    switch(category){
-      case `bOrAConstruct`:
-      case `aConstruct`:
-      case `sConstruct`:
-      case `transcendant`:
-        drop = chance.pickone(unitData[category]);
-        name = drop.frame;
-        return { name, assetPath: `${unitData.assetPath}${name}.png`, rank: drop.rank };
-      case `fiveStarWeapon`:
-      case `sixStarWeapon`:
-        drop = chance.pickone(weaponData[category]);
-        name = Object.values(drop)[0];
-        return { name, assetPath: `${weaponData.assetPath}${name}.png` };
-      default:
-        console.log(
-          `pickOneFromSpecificCategory: ${category} is not a valid category. Please create an issue`
-        );
-        break;
+  generateLookupTable(){
+    this.lookupTable = {};
+    for(const banner in dropTables){
+      (dropTables[banner].items).forEach(
+        category => {
+          if(!(category in this.lookupTable)){
+            this.lookupTable[`${category}`] = new (this.categoryToClass(category))(category);
+          }
+        }
+      );
+    }
+  }
+
+  pickOneFromCategory(category) {
+    try{
+      return this.lookupTable[category].pickOneFromCategory();
+    } catch(err){
+      console.log(category, err);
+    }
+  }
+  pickOneFromCategoryWithoutRateUp(rateUpSelection){
+    try{
+      return this.lookupTable[category].pickOneFromCategoryWithoutRateUp();
+    } catch(err){
+      console.log(category, err);
     }
   }
 }
