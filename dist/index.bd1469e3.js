@@ -56,12 +56,14 @@ class Banner {
         let category;
         this.currentFiveStarPity++;
         this.currentSixStarPity++;
-        if (this.currentFiveStarPity === this.fiveStarPity) {
-            drop = database.pickOneFromCategory(this.fiveStarPityType);
-            category = this.fiveStarPityType;
-        } else if (this.currentSixStarPity === this.sixStarPity) {
+        //need six star pity check first
+        //otherwise, can trigger edge case of hitting 5 star pity at 60, giving A construct instead of S construct
+        if (this.currentSixStarPity === this.sixStarPity) {
             drop = database.pickOneFromCategory(this.sixStarPityType);
             category = this.sixStarPityType;
+        } else if (this.currentFiveStarPity === this.fiveStarPity) {
+            drop = database.pickOneFromCategory(this.fiveStarPityType);
+            category = this.fiveStarPityType;
         } else {
             category = chance.weighted(dropTables[this.bannerType].items, dropTables[this.bannerType].rates);
             drop = database.pickOneFromCategory(category);
