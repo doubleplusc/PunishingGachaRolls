@@ -64,6 +64,9 @@ class Banner {
       this.currentFiveStarPity = 0;
       this.currentSixStarPity = 0;
     }
+    if(this.currentFiveStarPity > this.fiveStarPity || this.currentSixStarPity > this.sixStarPity){
+      alert(`Pity had a nuclear meltdown. Please take a screenshot of your rolls and create an issue.`);
+    }
   }
   roll1() {
     let drop;
