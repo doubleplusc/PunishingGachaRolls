@@ -1,6 +1,8 @@
 // https://stackoverflow.com/questions/19706046/how-to-read-an-external-local-json-file-in-javascript
 // https://stackoverflow.com/questions/18417114/add-item-to-dropdown-list-in-html-using-javascript
 
+import { unitData } from "./data.js";
+import { Banner } from "./Banner.js";
 const bannerTargetSelect = document.getElementById(`select-target`);
 let baseMemberA = unitData.aConstruct;
 let options = [];
@@ -8,7 +10,7 @@ let option = document.createElement(`option`);
 let pityCounter = document.getElementById(`pityCounter`);
 option.text = `Select`;
 options.push(option.outerHTML);
-for (aRank of baseMemberA) {
+for (const aRank of baseMemberA) {
   option.text = aRank.frame;
   option.value = aRank.frame;
   options.push(option.outerHTML);
@@ -35,6 +37,6 @@ function roll10OfBanner(e) {
   e.preventDefault();
   baseMemberBanner.roll10();
 }
-const chance = new Chance();
-const database = new ItemDatabase();
+
+chance = new Chance();
 const baseMemberBanner = new Banner(`baseMember`);

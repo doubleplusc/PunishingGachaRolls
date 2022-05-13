@@ -1,4 +1,4 @@
-const bannerData = {
+export const bannerData = {
   baseMember: {
     name: 'Base Member Recruit',
     rateUpPool: 'aConstruct',
@@ -31,7 +31,7 @@ const bannerData = {
     rateUpChance: 80,
   },
 };
-const dropTables = {
+export const dropTables = {
   baseMember: {
     //we need the 2 0 rates at the end or the lookup table for B and A constructs won't be created
     rates: [0.5, 13.95, 22.11, 28.39, 14.42, 4.81, 14.42, 0, 0],
@@ -82,7 +82,7 @@ const dropTables = {
     items: ['constructShard'],
   },
 };
-const itemData = {
+export const itemData = {
   assetPath: './assets/items/',
   items: [
     'CogPackXL',
@@ -107,7 +107,7 @@ const itemData = {
   exp: ['EXPPodL'],
   overclock: ['MajorOverclockAlloy', 'MemoryOverclockCircuitII'],
 };
-const unitData = {
+export const unitData = {
   assetPath: './assets/units/',
   aConstruct: [
     {
@@ -333,7 +333,7 @@ const unitData = {
     },
   ],
 };
-const weaponData = {
+export const weaponData = {
   assetPath: './assets/weapons/',
   sixStarWeapon: [
     { wolfFang: ['WolfFang', 'BerserkFusion', 'Benediction', 'Gloomlight'] },

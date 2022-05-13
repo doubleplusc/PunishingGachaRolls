@@ -1,3 +1,4 @@
+import {unitData, itemData, weaponData} from "./data.js";
 class BaseSelector{
   dataTable;
   category;
@@ -32,7 +33,7 @@ class BaseSelector{
   }
 }
 
-class ConstructSelector extends BaseSelector{
+export class ConstructSelector extends BaseSelector{
   constructor(category){
     super(category);
     this.dataTable = unitData;
@@ -42,7 +43,7 @@ class ConstructSelector extends BaseSelector{
   }
 }
 
-class BOrAConstructSelector extends ConstructSelector{
+export class BOrAConstructSelector extends ConstructSelector{
   list;
   constructor(category){
     super(category);
@@ -58,7 +59,7 @@ class BOrAConstructSelector extends ConstructSelector{
   }
 }
 
-class ConstructShardSelector extends ConstructSelector{
+export class ConstructShardSelector extends ConstructSelector{
   list;
   constructor(category){
     super(category);
@@ -74,7 +75,7 @@ class ConstructShardSelector extends ConstructSelector{
   }
 }
 
-class WeaponSelector extends BaseSelector{
+export class WeaponSelector extends BaseSelector{
   constructor(category){
     super(category);
     this.dataTable = weaponData;
@@ -84,7 +85,7 @@ class WeaponSelector extends BaseSelector{
   }
 }
 
-class ItemSelector extends BaseSelector{
+export class ItemSelector extends BaseSelector{
   constructor(category){
     super(category);
     this.dataTable = itemData;

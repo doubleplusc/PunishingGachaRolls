@@ -1,4 +1,6 @@
-class Banner {
+import {database} from "./ItemDatabase.js";
+import { bannerData, dropTables } from "./data.js";
+export class Banner {
   bannerType;
 
   sixStarPity; // either S rank or 6* weapon

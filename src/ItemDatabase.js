@@ -1,3 +1,5 @@
+import {dropTables} from "./data.js";
+import { BOrAConstructSelector, ConstructShardSelector, ConstructSelector, WeaponSelector, ItemSelector } from "./DropSelector.js";
 class ItemDatabase {
   lookupTable;
   constructor() {
@@ -60,3 +62,5 @@ class ItemDatabase {
     }
   }
 }
+
+export const database = new ItemDatabase();
