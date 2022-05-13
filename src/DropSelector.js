@@ -24,11 +24,8 @@ class BaseSelector{
     let drop = this.pick();
     return this.packReturnObject(drop);
   }
-  pickOneFromCategoryWithoutRateUp(rateUpSelection){
-    let drop = this.pick();
-    while(drop.name === rateUpSelection){
-      drop = this.pick();
-    }
+  pickSpecificDrop(selection){
+    let drop = this.getReferenceTable().find(obj => obj.frame === selection);
     return this.packReturnObject(drop);
   }
 }

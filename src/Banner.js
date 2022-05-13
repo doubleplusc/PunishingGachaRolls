@@ -19,17 +19,16 @@ export class Banner {
 
   rateUpSelection;
 
+  rateUpCategory;
+
   currentRolls;
 
   constructor(bannerType) {
     this.bannerType = bannerType;
-    this.fiveStarPity = 10;
     this.currentFiveStarPity = 0;
-    this.fiveStarPityType = 'aConstruct';
-    this.sixStarPity = 60;
     this.currentSixStarPity = 0;
-    this.sixStarPityType = `sConstruct`;
     this.rateUpPercent = 70;
+    this.rateUpCategory = ``;
     this.parseData();
   }
 
@@ -38,9 +37,12 @@ export class Banner {
     this.rateUpPercent = bannerData[this.bannerType].rateUpChance;
     this.sixStarPity = bannerData[this.bannerType].sixStarPity;
     this.fiveStarPity = bannerData[this.bannerType].fiveStarPity;
-    //this.fiveStarPityType = bannerData[this.bannerType].fiveStarPityType;
-    this.currentSixStarPity = 0;
-    this.currentFiveStarPity = 0;
+    this.fiveStarPityType = bannerData[this.bannerType].fiveStarPityType;
+    this.sixStarPityType = bannerData[this.bannerType].sixStarPityType;
+    this.rateUpCategory = `aConstruct`;
+
+    //debug
+    this.rateUpSelection = `Dawn`;
   }
 
   roll10() {
@@ -59,7 +61,7 @@ export class Banner {
     this.currentRolls = parent;
     let domParent = document.querySelector(`.parent2`);
     domParent.replaceChildren(...parent.childNodes);
-    pityCounter.innerText = `Pity: ${this.currentSixStarPity}`;
+    pityCounter.innerText = `Pity: ${this.currentFiveStarPity} / ${this.currentSixStarPity}`;
   }
   checkPity(drop, category){
     //need to override for weapon and transcendant banners
@@ -71,7 +73,7 @@ export class Banner {
       this.currentSixStarPity = 0;
     }
     if(this.currentFiveStarPity > this.fiveStarPity || this.currentSixStarPity > this.sixStarPity){
-      alert(`Pity had a nuclear meltdown. Please take a screenshot of your rolls and create an issue.`);
+      alert(`Pity had a nuclear meltdown. Please take a screenshot of the page and create an issue.`);
     }
   }
   roll1() {
@@ -82,19 +84,34 @@ export class Banner {
     //need six star pity check first
     //otherwise, can trigger edge case of hitting 5 star pity at 60, giving A construct instead of S construct
     if(this.currentSixStarPity === this.sixStarPity){
-      drop = database.pickOneFromCategory(this.sixStarPityType);
+      //drop = database.pickOneFromCategory(this.sixStarPityType);
+      console.log(`six star pity reached`);
+      drop = this.pickPity(this.sixStarPityType);
       category = this.sixStarPityType;
     }
     else if(this.currentFiveStarPity === this.fiveStarPity){
-      drop = database.pickOneFromCategory(this.fiveStarPityType);
+      //drop = database.pickOneFromCategory(this.fiveStarPityType);
+      console.log(`five star pity reached`);
+      drop = this.pickPity(this.fiveStarPityType);
       category = this.fiveStarPityType;
     }
     else{
+      //in case our nonpity drop gave us a lucky early jackpot, we need to apply rate up as well
       category = chance.weighted(
         dropTables[this.bannerType].items,
         dropTables[this.bannerType].rates
       );
-      drop = database.pickOneFromCategory(category);
+      if(category === this.pityCategory || category === `bOrAConstruct`){
+        console.log(`Got lucky ${category} drop of rate up category, check rate up success`);
+        drop = this.pickPity(category);
+      }
+      else if(category === this.fiveStarPityType || category === this.sixStarPityType){
+        console.log(`Got lucky ${category} drop not of rate up category, pick random`);
+        drop = this.pickPity(category);
+      }
+      else{
+        drop = database.pickOneFromCategory(category);
+      }
     }
     this.checkPity(drop, category);
     return { drop, category };
@@ -102,26 +119,35 @@ export class Banner {
   isSuccessRateUp(){
     //weapon banner must override to deal with different rates
     let random = chance.natural({max: 100});
-    return random >= this.rateUpPercent;
+    return random <= this.rateUpPercent;
   }
   pickPityDrop(){
     //weapon banner must override to deal with offrates
   }
   pickPity(pityCategory) {
+    //don't do rate up calculations if it's not the same category. Prevents A selections from stifling S pity drops
+    if(pityCategory !== this.rateUpCategory && pityCategory !== `bOrAConstruct`){
+      console.log(`${pityCategory} does not have rate up, skip`);
+      return database.pickOneFromCategory(pityCategory); 
+    }
     let getSelectedRateUp = this.isSuccessRateUp();
     if(this.rateUpSelection && getSelectedRateUp){
       //rate up is not a lie
-      return database.pickSpecificDrop();
+      console.log(`Rateup ✅, picking rate up selection ${this.rateUpSelection}`);
+      return database.pickSpecificDrop(this.rateUpSelection, pityCategory);
     }
     else if(this.rateUpSelection && !getSelectedRateUp){
       //rate up is a lie
       let drop = database.pickOneFromCategory(pityCategory);
       while(drop.name === this.rateUpSelection){
-        drop = database.pickOneFromCategoryWithoutRateUp();
+        drop = database.pickOneFromCategory(pityCategory);
       }
+      console.log(`Rateup ❌, picking ${drop.name} instead of ${this.rateUpSelection}`);
+      return drop;
     }
     else{
       //no rate up
+      console.log(`No rate up, pick something random`);
       return database.pickOneFromCategory(pityCategory);
     }
   }

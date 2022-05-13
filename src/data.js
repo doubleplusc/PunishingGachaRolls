@@ -1,33 +1,34 @@
 export const bannerData = {
   baseMember: {
     name: 'Base Member Recruit',
-    rateUpPool: 'aConstruct',
+    fiveStarPityType: 'aConstruct',
+    sixStarPityType: 'sConstruct',
+    rateUpCategory: 'aConstruct',
     rateUpChance: 80,
     fiveStarPity: 10,
     sixStarPity: 60,
   },
   baseWeapon: {
     name: 'Base Weapon Research',
-    rateUpPool: 'weapons',
+    fiveStarPityType: 'fiveStarWeapon',
+    sixStarPityType: 'sixStarWeapon',
     rateUpChance: 0,
     fiveStarPity: 10,
     sixStarPity: 30,
   },
   targetWeapon: {
     name: 'Target Weapon Research',
-    rateUpPool: 'weapons',
+    fiveStarPityType: 'fiveStarWeapon',
+    sixStarPityType: 'sixStarWeapon',
+    rateUpCategory: 'sixStarWeapon',
     rateUpChance: 80,
     fiveStarPity: 10,
     sixStarPity: 30,
   },
   transcendant: {
     name: 'Transcendants',
-    rateUpPool: 'transcendants',
-    rateUpChance: 80,
-  },
-  test: {
-    name: 'Debug Purposes only',
-    rateUpPool: 'sConstruct',
+    sixStarPityType: 'transcendant',
+    rateUpCategory: 'transcendant',
     rateUpChance: 80,
   },
 };

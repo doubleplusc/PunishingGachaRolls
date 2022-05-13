@@ -46,7 +46,6 @@ class ItemDatabase {
       );
     }
   }
-
   pickOneFromCategory(category) {
     try{
       return this.lookupTable[category].pickOneFromCategory();
@@ -54,9 +53,9 @@ class ItemDatabase {
       console.log(category, err);
     }
   }
-  pickOneFromCategoryWithoutRateUp(rateUpSelection){
+  pickSpecificDrop(selection, category) {
     try{
-      return this.lookupTable[category].pickOneFromCategoryWithoutRateUp();
+      return this.lookupTable[category].pickSpecificDrop(selection);
     } catch(err){
       console.log(category, err);
     }
