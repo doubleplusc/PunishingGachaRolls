@@ -545,7 +545,6 @@ class Banner {
     currentRolls;
     constructor(bannerType){
         this.bannerType = bannerType;
-        this.parseData();
         this.fiveStarPity = 10;
         this.currentFiveStarPity = 0;
         this.fiveStarPityType = 'aConstruct';
@@ -553,9 +552,14 @@ class Banner {
         this.currentSixStarPity = 0;
         this.sixStarPityType = `sConstruct`;
         this.rateUpPercent = 70;
+        this.parseData();
     }
     parseData() {
+        //console.log(this.bannerType, bannerData[this.bannerType].rateUpChance, bannerData[this.bannerType].sixStarPity, bannerData[this.bannerType].fiveStarPity);
         this.rateUpPercent = _dataJs.bannerData[this.bannerType].rateUpChance;
+        this.sixStarPity = _dataJs.bannerData[this.bannerType].sixStarPity;
+        this.fiveStarPity = _dataJs.bannerData[this.bannerType].fiveStarPity;
+        //this.fiveStarPityType = bannerData[this.bannerType].fiveStarPityType;
         this.currentSixStarPity = 0;
         this.currentFiveStarPity = 0;
     }

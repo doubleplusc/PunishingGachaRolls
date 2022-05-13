@@ -526,8 +526,10 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"gLLPy":[function(require,module,exports) {
-// https://stackoverflow.com/questions/19706046/how-to-read-an-external-local-json-file-in-javascript
-// https://stackoverflow.com/questions/18417114/add-item-to-dropdown-list-in-html-using-javascript
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "bannerTable", ()=>bannerTable
+);
 var _dataJs = require("./data.js");
 var _bannerJs = require("./Banner.js");
 const bannerTargetSelect = document.getElementById(`select-target`);
@@ -563,8 +565,10 @@ function roll10OfBanner(e) {
     baseMemberBanner.roll10();
 }
 chance = new Chance();
+const bannerTable = [];
+for(const bannerType in _dataJs.bannerData)bannerTable.push(new _bannerJs.Banner(bannerType));
 const baseMemberBanner = new _bannerJs.Banner(`baseMember`);
 
-},{"./data.js":"9kapS","./Banner.js":"jabKH"}]},["3DqtE","gLLPy"], "gLLPy", "parcelRequire7423")
+},{"./data.js":"9kapS","./Banner.js":"jabKH","@parcel/transformer-js/src/esmodule-helpers.js":"h2BEm"}]},["3DqtE","gLLPy"], "gLLPy", "parcelRequire7423")
 
 //# sourceMappingURL=index.4d6bcbeb.js.map
