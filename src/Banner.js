@@ -159,3 +159,21 @@ export class Banner {
 
   changeRateUpSelection(selection) {}
 }
+
+class ConstructBanner extends Banner{
+  constructor(bannerType){
+    super(bannerType);
+  }
+}
+
+class WeaponBanner extends Banner{
+  constructor(bannerType){
+    super(bannerType);
+  }
+}
+
+class TranscendantBanner extends Banner{
+  constructor(bannerType){
+    super(bannerType);
+  }
+}
