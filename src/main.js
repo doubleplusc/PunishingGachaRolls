@@ -5,7 +5,7 @@ const bannerTargetSelect = document.getElementById(`select-target`);
 let pityCounter = document.getElementById(`pityCounter`);
 
 bannerSelect.addEventListener(`change`, changeBannerType);
-bannerTargetSelect.addEventListener(`change`, changeTargetImage);
+bannerTargetSelect.addEventListener(`change`, changeBannerTarget);
 const roll10Button = document.getElementById(`roll10`);
 roll10Button.addEventListener(`click`, roll10OfBanner);
 // need to programmatically set the selectable targets for the different banners. Can use a single helper function that uses callbacks on the different banners to generate
@@ -29,7 +29,7 @@ function populateBannerTargetSelect(){
   let option = document.createElement(`option`);
   option.text = `Select`;
   options.push(option.outerHTML);
-  for (const choice of bannerData[bannerVal][`rateUpCategory`]) {
+  for (const choice of unitData[bannerData[bannerVal][`rateUpCategory`]]) {
     option.text = choice.frame;
     option.value = choice.frame;
     options.push(option.outerHTML);
@@ -37,8 +37,9 @@ function populateBannerTargetSelect(){
   bannerTargetSelect.insertAdjacentHTML(`beforeEnd`, options.join(`\n`));
 }
 //put this in Banner
-function changeTargetImage(e) {
+function changeBannerTarget(e) {
   let choice = e.target.value;
+  currentBanner.rateUpSelection = choice;
   let choiceImage = document.getElementById(`select-target-image`);
   if (choice !== `Select`) {
     choiceImage.setAttribute(`src`, `${unitData.assetPath}${choice}.png`);
@@ -51,6 +52,6 @@ function changeTargetImage(e) {
 
 function roll10OfBanner(e) {
   e.preventDefault();
-  baseMemberBanner.roll10();
+  currentBanner.roll10();
 }
 

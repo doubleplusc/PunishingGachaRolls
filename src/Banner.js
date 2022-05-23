@@ -40,9 +40,6 @@ export class Banner {
     this.fiveStarPityType = bannerData[this.bannerType].fiveStarPityType;
     this.sixStarPityType = bannerData[this.bannerType].sixStarPityType;
     this.rateUpCategory = `aConstruct`;
-
-    //debug
-    this.rateUpSelection = `Dawn`;
   }
 
   roll10() {
@@ -131,12 +128,12 @@ export class Banner {
       return database.pickOneFromCategory(pityCategory); 
     }
     let getSelectedRateUp = this.isSuccessRateUp();
-    if(this.rateUpSelection && getSelectedRateUp){
+    if(this.rateUpSelection !== `Select` && this.rateUpSelection && getSelectedRateUp){
       //rate up is not a lie
       console.log(`Rateup ✅, picking rate up selection ${this.rateUpSelection}`);
       return database.pickSpecificDrop(this.rateUpSelection, pityCategory);
     }
-    else if(this.rateUpSelection && !getSelectedRateUp){
+    else if(this.rateUpSelection !== `Select` && this.rateUpSelection && !getSelectedRateUp){
       //rate up is a lie
       let drop = database.pickOneFromCategory(pityCategory);
       while(drop.name === this.rateUpSelection){
