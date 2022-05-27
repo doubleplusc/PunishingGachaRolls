@@ -8,6 +8,15 @@ export const bannerData = {
     fiveStarPity: 10,
     sixStarPity: 60,
   },
+  themedConstruct: {
+    name: 'Themed Construct',
+    fiveStarPityType: 'aConstruct',
+    sixStarPityType: 'sConstruct',
+    rateUpCategory: 'sConstruct',
+    rateUpChance: 80,
+    fiveStarPity: 10,
+    sixStarPity: 60,
+  },
   baseWeapon: {
     name: 'Base Weapon Research',
     fiveStarPityType: 'fiveStarWeapon',
@@ -34,6 +43,21 @@ export const bannerData = {
 };
 export const dropTables = {
   baseMember: {
+    //we need the 2 0 rates at the end or the lookup table for B and A constructs won't be created
+    rates: [0.5, 13.95, 22.11, 28.39, 14.42, 4.81, 14.42, 0, 0],
+    items: [
+      'sConstruct',
+      'bOrAConstruct',
+      'constructShard',
+      'fourStarEquipment',
+      'overclock',
+      'exp',
+      'cogs',
+      'bConstruct',
+      'aConstruct'
+    ],
+  },
+  themedConstruct: {
     //we need the 2 0 rates at the end or the lookup table for B and A constructs won't be created
     rates: [0.5, 13.95, 22.11, 28.39, 14.42, 4.81, 14.42, 0, 0],
     items: [
