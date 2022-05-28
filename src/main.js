@@ -3,11 +3,8 @@ import { Banner } from "./Banner.js";
 const bannerSelect = document.getElementById(`select-banner`);
 const bannerTargetSelect = document.getElementById(`select-target`);
 let pityCounter = document.getElementById(`pityCounter`);
-
-bannerSelect.addEventListener(`change`, changeBannerType);
-bannerTargetSelect.addEventListener(`change`, changeBannerTarget);
 const roll10Button = document.getElementById(`roll10`);
-roll10Button.addEventListener(`click`, roll10OfBanner);
+
 // need to programmatically set the selectable targets for the different banners. Can use a single helper function that uses callbacks on the different banners to generate
 chance = new Chance();
 export const bannerTable = [];
@@ -16,6 +13,10 @@ for(const bannerType in bannerData){
 }
 
 let currentBanner = bannerTable[0];
+bannerSelect.addEventListener(`change`, changeBannerType);
+bannerTargetSelect.addEventListener(`change`, currentBanner.changeRateUpSelection.bind(currentBanner));
+roll10Button.addEventListener(`click`, roll10OfBanner);
+
 populateBannerTargetSelect();
 
 function changeBannerType(e){
@@ -35,19 +36,6 @@ function populateBannerTargetSelect(){
     options.push(option.outerHTML);
   }
   bannerTargetSelect.insertAdjacentHTML(`beforeEnd`, options.join(`\n`));
-}
-//put this in Banner
-function changeBannerTarget(e) {
-  let choice = e.target.value;
-  currentBanner.rateUpSelection = choice;
-  let choiceImage = document.getElementById(`select-target-image`);
-  if (choice !== `Select`) {
-    choiceImage.setAttribute(`src`, `${unitData.assetPath}${choice}.png`);
-    choiceImage.style.opacity = 100; // there has to be a smarter way to hide the picture when the choice is select?
-  } else {
-    choiceImage.setAttribute(`src`, `${unitData.assetPath}${choice}.png`);
-    choiceImage.style.opacity = 0;
-  }
 }
 
 function roll10OfBanner(e) {

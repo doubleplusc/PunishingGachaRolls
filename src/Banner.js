@@ -154,7 +154,18 @@ export class Banner {
     this.currentFiveStarPity = 0;
   }
 
-  changeRateUpSelection(selection) {}
+  changeRateUpSelection({target: {value: selection}}) {
+    let choiceImage = document.getElementById(`select-target-image`);
+    this.rateUpSelection = selection;
+    if (selection !== `Select`) {
+      choiceImage.setAttribute(`src`, `${database.pickSpecificDrop(selection, this.rateUpCategory).assetPath}`);
+      choiceImage.style.opacity = 100; // there has to be a smarter way to hide the picture when the choice is select?
+    } else {
+      choiceImage.setAttribute(`src`, `${database.pickSpecificDrop(selection, this.rateUpCategory).assetPath}`);
+      choiceImage.style.opacity = 0;
+    }
+  }
+  
 }
 
 class ConstructBanner extends Banner{
