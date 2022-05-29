@@ -48,6 +48,7 @@ class ItemDatabase {
   }
   pickOneFromCategory(category) {
     try{
+      //console.log(`Database pick one from ${category}`);
       return this.lookupTable[category].pickOneFromCategory();
     } catch(err){
       console.log(category, err);
@@ -59,6 +60,12 @@ class ItemDatabase {
     } catch(err){
       console.log(category, err);
     }
+  }
+  getReferenceTable(category){
+    return this.lookupTable[category].getReferenceTable();
+  }
+  pickTargetedWeapon(isRateUp, rateUpSelection, category){
+    return this.this.lookupTable[category].pickTargetedWeapon(isRateUp, rateUpSelection, category);
   }
 }
 

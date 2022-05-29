@@ -1,43 +1,38 @@
-import { unitData, bannerData } from "./data.js";
-import { Banner } from "./Banner.js";
+import { unitData, bannerData, weaponData} from "./data.js";
+import { Banner, ConstructBanner, TranscendantBanner, WeaponBanner } from "./Banner.js";
 const bannerSelect = document.getElementById(`select-banner`);
 const bannerTargetSelect = document.getElementById(`select-target`);
 let pityCounter = document.getElementById(`pityCounter`);
 const roll10Button = document.getElementById(`roll10`);
 
-// need to programmatically set the selectable targets for the different banners. Can use a single helper function that uses callbacks on the different banners to generate
 chance = new Chance();
-export const bannerTable = [];
-for(const bannerType in bannerData){
-  bannerTable.push(new Banner(bannerType));
+const bannerLookup = {
+  baseMember: ConstructBanner,
+  baseWeapon: WeaponBanner,
+  themedConstruct: ConstructBanner,
+  targetWeapon: WeaponBanner,
+  transcendant: TranscendantBanner,
+};
+const bannerTable = new Map();
+for(let bannerType of bannerSelect.options){
+  let val = bannerType.value;
+  bannerTable.set(val, new (bannerLookup[val])(val));
 }
 
-let currentBanner = bannerTable[0];
+//let currentBanner = bannerTable.get(bannerSelect.value);
+let currentBanner = bannerTable.get(`baseWeapon`);
+console.log(currentBanner);
 bannerSelect.addEventListener(`change`, changeBannerType);
 bannerTargetSelect.addEventListener(`change`, currentBanner.changeRateUpSelection.bind(currentBanner));
 roll10Button.addEventListener(`click`, roll10OfBanner);
 
-populateBannerTargetSelect();
+currentBanner.populateBannerTargetSelect();
 
 function changeBannerType(e){
 
 }
 
-//put this in Banner
-function populateBannerTargetSelect(){
-  let bannerVal = bannerSelect.value;
-  let options = [];
-  let option = document.createElement(`option`);
-  option.text = `Select`;
-  options.push(option.outerHTML);
-  for (const choice of unitData[bannerData[bannerVal][`rateUpCategory`]]) {
-    option.text = choice.frame;
-    option.value = choice.frame;
-    options.push(option.outerHTML);
-  }
-  bannerTargetSelect.insertAdjacentHTML(`beforeEnd`, options.join(`\n`));
-}
-
+//also shift this to Banner
 function roll10OfBanner(e) {
   e.preventDefault();
   currentBanner.roll10();

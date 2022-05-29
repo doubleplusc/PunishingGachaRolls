@@ -33,13 +33,12 @@ export class Banner {
   }
 
   parseData() {
-    //console.log(this.bannerType, bannerData[this.bannerType].rateUpChance, bannerData[this.bannerType].sixStarPity, bannerData[this.bannerType].fiveStarPity);
     this.rateUpPercent = bannerData[this.bannerType].rateUpChance;
+    this.rateUpCategory = bannerData[this.bannerType].rateUpCategory;
     this.sixStarPity = bannerData[this.bannerType].sixStarPity;
     this.fiveStarPity = bannerData[this.bannerType].fiveStarPity;
     this.fiveStarPityType = bannerData[this.bannerType].fiveStarPityType;
     this.sixStarPityType = bannerData[this.bannerType].sixStarPityType;
-    this.rateUpCategory = `aConstruct`;
   }
 
   roll10() {
@@ -62,10 +61,10 @@ export class Banner {
   }
   checkPity(drop, category){
     //need to override for weapon and transcendant banners
-    if(drop.rank === `A` && category !== `constructShard`){
+    if(drop.rank === `A` && `constructShard` !== category){
       this.currentFiveStarPity = 0;
     }
-    else if(drop.rank === `S` && category !== `constructShard`){
+    else if(drop.rank === `S` && `constructShard` !== category){
       this.currentFiveStarPity = 0;
       this.currentSixStarPity = 0;
     }
@@ -98,7 +97,7 @@ export class Banner {
         dropTables[this.bannerType].items,
         dropTables[this.bannerType].rates
       );
-      if(category === this.pityCategory || category === `bOrAConstruct`){
+      if(category === this.pityCategory || `bOrAConstruct` === category){
         console.log(`Got lucky ${category} drop of rate up category, check rate up success`);
         drop = this.pickPity(category);
       }
@@ -120,24 +119,27 @@ export class Banner {
   }
   pickPityDrop(){
     //weapon banner must override to deal with offrates
+    return database.pickOneFromCategory(pityCategory);
   }
   pickPity(pityCategory) {
     //don't do rate up calculations if it's not the same category. Prevents A selections from stifling S pity drops
-    if(pityCategory !== this.rateUpCategory && pityCategory !== `bOrAConstruct`){
+    if(pityCategory !== this.rateUpCategory && `bOrAConstruct` !== pityCategory){
       console.log(`${pityCategory} does not have rate up, skip`);
       return database.pickOneFromCategory(pityCategory); 
     }
     let getSelectedRateUp = this.isSuccessRateUp();
-    if(this.rateUpSelection !== `Select` && this.rateUpSelection && getSelectedRateUp){
+    if(`Select` !== this.rateUpSelection && this.rateUpSelection && getSelectedRateUp){
       //rate up is not a lie
       console.log(`Rateup ✅, picking rate up selection ${this.rateUpSelection}`);
       return database.pickSpecificDrop(this.rateUpSelection, pityCategory);
     }
-    else if(this.rateUpSelection !== `Select` && this.rateUpSelection && !getSelectedRateUp){
+    else if(`Select` !== this.rateUpSelection && this.rateUpSelection && !getSelectedRateUp){
       //rate up is a lie
-      let drop = database.pickOneFromCategory(pityCategory);
+      //let drop = database.pickOneFromCategory(pityCategory);
+      let drop = this.pickPityDrop(false, pityCategory);
       while(drop.name === this.rateUpSelection){
-        drop = database.pickOneFromCategory(pityCategory);
+        //drop = database.pickOneFromCategory(pityCategory);
+        drop = this.pickPityDrop(false, pityCategory);
       }
       console.log(`Rateup ❌, picking ${drop.name} instead of ${this.rateUpSelection}`);
       return drop;
@@ -157,7 +159,7 @@ export class Banner {
   changeRateUpSelection({target: {value: selection}}) {
     let choiceImage = document.getElementById(`select-target-image`);
     this.rateUpSelection = selection;
-    if (selection !== `Select`) {
+    if (`Select` !== selection) {
       choiceImage.setAttribute(`src`, `${database.pickSpecificDrop(selection, this.rateUpCategory).assetPath}`);
       choiceImage.style.opacity = 100; // there has to be a smarter way to hide the picture when the choice is select?
     } else {
@@ -165,22 +167,80 @@ export class Banner {
       choiceImage.style.opacity = 0;
     }
   }
+
+  populateBannerTargetSelect(){
+    console.log(this.rateUpCategory);
+    let options = [];
+    let option = document.createElement(`option`);
+    option.text = `Select`;
+    options.push(option.outerHTML);
+    if(this.rateUpCategory){
+      for (const choice of database.getReferenceTable(this.rateUpCategory)) {
+        option.text = choice.frame;
+        option.value = choice.frame;
+        options.push(option.outerHTML);
+      }
+    }
+    const bannerTargetSelect = document.getElementById(`select-target`);
+    bannerTargetSelect.insertAdjacentHTML(`beforeEnd`, options.join(`\n`));
+  }
   
 }
 
-class ConstructBanner extends Banner{
+export class ConstructBanner extends Banner{
   constructor(bannerType){
     super(bannerType);
   }
 }
 
-class WeaponBanner extends Banner{
+export class WeaponBanner extends Banner{
   constructor(bannerType){
     super(bannerType);
   }
+  pickPityDrop(isRateUp, pityCategory){
+    //need to be generalized for both 5 star and 6 star weapons
+    //the 6 star weapon array needs to be processed before returning
+    database.pickTargetedWeapon(isRateUp, this.rateUpSelection, pityCategory);
+  }
+  pickPity(pityCategory) {
+    //pity category applies to both 5 and 6 star weapons
+    let getSelectedRateUp = this.isSuccessRateUp();
+    if(`Select` !== this.rateUpSelection && this.rateUpSelection && getSelectedRateUp){
+      //rate up is not a lie
+      console.log(`Rateup ✅, picking rate up selection ${this.rateUpSelection}`);
+      return database.pickSpecificDrop(this.rateUpSelection, pityCategory);
+    }
+    else if(`Select` !== this.rateUpSelection && this.rateUpSelection && !getSelectedRateUp){
+      //rate up is a lie
+      let drop = this.pickPityDrop(false, pityCategory);
+      while(drop.name === this.rateUpSelection){
+        drop = this.pickPityDrop(false, pityCategory);
+      }
+      console.log(`Rateup ❌, picking ${drop.name} instead of ${this.rateUpSelection}`);
+      return drop;
+    }
+    else{
+      //no rate up
+      console.log(`No rate up, pick something random`);
+      return database.pickOneFromCategory(pityCategory);
+    }
+  }
+  checkPity(drop, category){
+    //need to override for weapon and transcendant banners
+    if(`fiveStarWeapon` === category){
+      this.currentFiveStarPity = 0;
+    }
+    else if(`sixStarWeapon` === category){
+      this.currentFiveStarPity = 0;
+      this.currentSixStarPity = 0;
+    }
+    if(this.currentFiveStarPity > this.fiveStarPity || this.currentSixStarPity > this.sixStarPity){
+      alert(`Pity had a nuclear meltdown. Please take a screenshot of the page and create an issue.`);
+    }
+  }
 }
 
-class TranscendantBanner extends Banner{
+export class TranscendantBanner extends Banner{
   constructor(bannerType){
     super(bannerType);
   }

@@ -78,7 +78,25 @@ export class WeaponSelector extends BaseSelector{
     this.dataTable = weaponData;
   }
   packReturnObject(drop){
-    return { name: drop.name, assetPath: `${this.dataTable.assetPath}${drop.name}.png` };
+    if(`sixStarWeapon` === this.category){
+      for(const [key, val] of Object.entries(drop)){
+        drop = drop[key][0];
+      }
+    }
+    console.log(`WeaponSelector returning object ${drop} path ${this.dataTable.assetPath}${drop}.png}`);
+    return { name: drop, assetPath: `${this.dataTable.assetPath}${drop}.png` };
+  }
+  pickSpecificDrop(isRateUp, rateUpSelection, category){
+    //only used in targeted weapon banner for 5 and 6 star weapon drops
+    let drop = this.getReferenceTable[rateUpSelection];
+    if(`fiveStarWeapon` === category){
+      drop = drop[3];
+    }
+    else{
+      drop = isRateUp ? drop[0] : drop[chance.integer({min: 1, max: 2})];
+    }
+    console.log(`WeaponSelector returning object ${drop} path ${this.dataTable.assetPath}${drop}.png}`);
+    return { name: drop, assetPath: `${this.dataTable.assetPath}${drop}.png` };
   }
 }
 

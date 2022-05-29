@@ -361,12 +361,12 @@ export const unitData = {
 export const weaponData = {
   assetPath: './assets/weapons/',
   sixStarWeapon: [
-    { wolfFang: ['WolfFang', 'BerserkFusion', 'Benediction', 'Gloomlight'] },
-    { zeroScale: ['ZeroScale', 'BerserkFusion', 'Benediction', 'Gloomlight'] },
-    { scion: ['Scion', 'HydroHeat', 'Sakura', 'Gloomlight'] },
+    { 'Wolf Fang': ['WolfFang', 'BerserkFusion', 'Benediction', 'Gloomlight'] },
+    { 'Zero Scale': ['ZeroScale', 'BerserkFusion', 'Benediction', 'Gloomlight'] },
+    { 'Scion': ['Scion', 'HydroHeat', 'Sakura', 'Gloomlight'] },
 
     {
-      lotusBerserker: [
+      'Lotus Berserker': [
         'LotusBerserker',
         'SoulRipper',
         'Darkness',
@@ -374,55 +374,55 @@ export const weaponData = {
       ],
     },
     {
-      inverseShadow: [
+      'Inverse Shadow': [
         'InverseShadow',
         'InverseChimera',
         'BigKamui',
         'KujiNoSada',
       ],
     },
-    { sakura: ['Sakura', 'WolfFang', 'TypeZero', 'KujiNoSada'] },
+    { 'Sakura': ['Sakura', 'WolfFang', 'TypeZero', 'KujiNoSada'] },
     {
-      crimsonBirch: ['CrimsonBirch', 'HydroHeat', 'FusionDragon', 'KujiNoSada'],
+      'Crimson Birch': ['CrimsonBirch', 'HydroHeat', 'FusionDragon', 'KujiNoSada'],
     },
-    { sariel: ['Sairel', 'StElmo', 'Tonitrus', 'KujiNoSada'] },
+    { 'Sariel': ['Sariel', 'StElmo', 'Tonitrus', 'KujiNoSada'] },
 
-    { typeZero: ['TypeZero', 'Ramiel', 'BerserkFusion', 'GuardianMount'] },
+    { 'Type Zero': ['TypeZero', 'Ramiel', 'BerserkFusion', 'GuardianMount'] },
     {
-      benediction: [
+      'Benediction': [
         'Benediction',
         'WolfFang',
         'LotusBerserker',
         'GuardianMount',
       ],
     },
-    { dragonWind: ['DragonWind', 'BigKamui', 'Ramiel', 'GuardianMount'] },
+    { 'Dragon Wind': ['DragonWind', 'BigKamui', 'Ramiel', 'GuardianMount'] },
 
-    { ramiel: ['Ramiel', 'LotusBerserker', 'SoulRipper', 'FalconE3320'] },
-    { tonitrus: ['Tonitrus', 'FusionDragon', 'PurplePeony', 'FalconE3320'] },
+    { 'Ramiel': ['Ramiel', 'LotusBerserker', 'SoulRipper', 'FalconE3320'] },
+    { 'Tonitrus': ['Tonitrus', 'FusionDragon', 'PurplePeony', 'FalconE3320'] },
 
     {
-      inverseChimera: [
+      'Inverse Chimera': [
         'InverseChimera',
         'InverseShadow',
         'SoulRipper',
         'LightningSpark',
       ],
     },
-    { hydroHeat: ['HydroHeat', 'Darkness', 'SoulRipper', 'LightningSpark'] },
+    { 'Hydro Heat': ['HydroHeat', 'Darkness', 'SoulRipper', 'LightningSpark'] },
 
     {
-      darkness: [
+      'Darkness': [
         'Darkness',
         'Benediction',
         'InverseChimera',
         'DynamoGreatsword',
       ],
     },
-    { bigKamui: ['BigKamui', 'TypeZero', 'WolfFang', 'DynamoGreatsword'] },
+    { 'Big Kamui': ['BigKamui', 'TypeZero', 'WolfFang', 'DynamoGreatsword'] },
 
     {
-      berserkFusion: [
+      'Berserk Fusion': [
         'BerserkFusion',
         'DragonWind',
         'InverseShadow',
@@ -430,7 +430,7 @@ export const weaponData = {
       ],
     },
     {
-      fusionDragon: [
+      'Fusion Dragon': [
         'FusionDragon',
         'DragonWind',
         'InverseShadow',
@@ -438,42 +438,42 @@ export const weaponData = {
       ],
     },
 
-    { soulRipper: ['SoulRipper', 'Darkness', 'TypeZero', 'StoneHeart'] },
-    { peacemaker: ['Peacemaker', 'FusionDragon', 'HydroHeat', 'StoneHeart'] },
+    { 'Soul Ripper': ['SoulRipper', 'Darkness', 'TypeZero', 'StoneHeart'] },
+    { 'Peacemaker': ['Peacemaker', 'FusionDragon', 'HydroHeat', 'StoneHeart'] },
 
-    { purplePeony: ['PurplePeony', 'BigKamui', 'Ramiel', 'FadedColor'] },
-    { stElmo: ['StElmo', 'Peacemaker', 'Scion', 'FadedColor'] },
-    { galatea: ['Galatea', 'Apollo', 'MistressOfTheWoods', 'FadedColor'] },
+    { 'Purple Peony': ['PurplePeony', 'BigKamui', 'Ramiel', 'FadedColor'] },
+    { 'St Elmo': ['StElmo', 'Peacemaker', 'Scion', 'FadedColor'] },
+    { 'Galatea': ['Galatea', 'Apollo', 'MistressOfTheWoods', 'FadedColor'] },
 
-    { gungnir: ['Gungnir', 'Crimson Birch', 'ZeroScale', 'RL03CBlackSpike'] },
+    { 'Gungnir': ['Gungnir', 'Crimson Birch', 'ZeroScale', 'RL03CBlackSpike'] },
 
-    { baji: ['Baji', 'Benediction', 'Tonitrus', 'WhiteQilin'] },
+    { 'Baji': ['Baji', 'Benediction', 'Tonitrus', 'WhiteQilin'] },
 
-    { ozma: ['Ozma', 'Gungnir', 'PurplePeony', 'CrownLure'] },
+    { 'Ozma': ['Ozma', 'Gungnir', 'PurplePeony', 'CrownLure'] },
 
-    { auncel: ['Auncel', 'Peacemaker', 'CrimsonBirch', 'FA2DAP'] },
+    { 'Auncel': ['Auncel', 'Peacemaker', 'CrimsonBirch', 'FA2DAP'] },
 
-    { apollo: ['Apollo', 'Sariel', 'Gungnir', 'KalaType1Gunblade'] },
+    { 'Apollo': ['Apollo', 'Sariel', 'Gungnir', 'KalaType1Gunblade'] },
 
-    { growl: ['Growl', 'StElmo', 'Ozma', 'Animus'] },
+    { 'Growl': ['Growl', 'StElmo', 'Ozma', 'Animus'] },
 
-    { phoenix: ['Phoenix', 'Apollo', 'Baji', 'CrimsonKnight'] },
+    { 'Phoenix': ['Phoenix', 'Apollo', 'Baji', 'CrimsonKnight'] },
 
-    { hestia: ['Hestia', 'Growl', 'Ozma', 'BipolarStar'] },
+    { 'Hestia': ['Hestia', 'Growl', 'Ozma', 'BipolarStar'] },
 
-    { sarastro: ['Sarastro', 'Auncel', 'Durandel', 'NeopolitanSolo'] },
+    { 'Sarastro': ['Sarastro', 'Auncel', 'Durandel', 'NeopolitanSolo'] },
 
-    { implosion: ['Implosion', 'Sarastro', 'Qinghe', 'Redshift'] },
+    { 'Implosion': ['Implosion', 'Sarastro', 'Qinghe', 'Redshift'] },
 
-    { silentFlash: ['SilentFlash', 'Baji', 'Hestia', 'DireCrusher'] },
+    { 'Silent Flash': ['SilentFlash', 'Baji', 'Hestia', 'DireCrusher'] },
 
     // transcendant only weapons
-    { thanatos: ['Thanatos', 'Peacemaker', 'Scion', 'Glimpse'] },
+    { 'Thanatos': ['Thanatos', 'Peacemaker', 'Scion', 'Glimpse'] },
 
-    { qinghe: ['Qinghe', 'Thanatos', 'Sariel', 'Guiyun'] },
+    { 'Qinghe': ['Qinghe', 'Thanatos', 'Sariel', 'Guiyun'] },
 
     {
-      mistressOfTheWoods: [
+      'Mistress of the Woods': [
         'MistressOfTheWoods',
         'InverseChimera',
         'Sakura',
@@ -481,13 +481,13 @@ export const weaponData = {
       ],
     },
 
-    { durandal: ['Durandal', 'Qinghe', 'MistressOfTheWoods', 'ComplexRoses'] },
+    { 'Durandal': ['Durandal', 'Qinghe', 'MistressOfTheWoods', 'ComplexRoses'] },
 
-    { boundless: ['Boundless', 'Thanatos', 'Phoenix', 'FrostRuler'] },
+    { 'Boundless': ['Boundless', 'Thanatos', 'Phoenix', 'FrostRuler'] },
 
     // Nier
     {
-      virtuousContractKai: [
+      'Virtuous Contract Kai': [
         'VirtuousContractKai',
         'Type4OLanceKai',
         'CruelOathKai',
@@ -496,7 +496,7 @@ export const weaponData = {
     },
 
     {
-      type4OLanceKai: [
+      'Type-4O Lance Kai': [
         'Type4OLanceKai',
         'VirtuousContractKai',
         'CruelOathKai',
@@ -505,7 +505,7 @@ export const weaponData = {
     },
 
     {
-      cruelOathKai: [
+      'Cruel Oath Kai': [
         'CruelOathKai',
         'VirtuousContractKai',
         'Type4OLanceKai',
@@ -561,7 +561,7 @@ export const weaponData = {
     'BulletAnt',
     'StandardGunblade',
     'Collaborator',
-    'TassledBannerSpear',
+    'TasseledBannerSpear',
     'Apocalypse',
     'BaselineModus',
     'FuriousGale',

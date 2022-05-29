@@ -34,15 +34,23 @@
   margin: 0.38rem;
 }
 
-.cogs, .exp, .overclock, .constructShard, .fourStarEquipment{
+.twoStarWeapon {
+  border-color: #72b872;
+}
+
+.threeStarWeapon {
+  border-color: #3c71bb;
+}
+
+.cogs, .exp, .overclock, .constructShard, .fourStarEquipment, .fourStarWeapon {
   border-color: #cb68c2;
 }
 
-.aConstruct, .bConstruct, .bOrAConstruct {
+.aConstruct, .bConstruct, .bOrAConstruct, .fiveStarWeapon {
   border-color: #ff8d1c;
 }
 
-.sConstruct {
+.sConstruct, .sixStarWeapon {
   border-color: #fb5824;
 }
 
