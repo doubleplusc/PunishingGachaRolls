@@ -115,7 +115,7 @@ export class Banner {
     let random = chance.natural({max: 100});
     return random <= this.rateUpPercent;
   }
-  pickPityDrop(isRateUp, pityCategory){
+  pickPityDrop(pityCategory){
     //weapon banner must override to deal with offrates
     return database.pickOneFromCategory(pityCategory);
   }
@@ -211,10 +211,10 @@ export class WeaponBanner extends Banner{
   constructor(bannerType){
     super(bannerType);
   }
-  pickPityDrop(isRateUp, pityCategory){
+  pickPityDrop(pityCategory, isRateUp){
     //need to be generalized for both 5 star and 6 star weapons
     //the 6 star weapon array needs to be processed before returning
-    database.pickTargetedWeapon(this.rateUpSelection, pityCategory, isRateUp);
+    return database.pickTargetedWeapon(this.rateUpSelection, pityCategory, isRateUp);
   }
   pickPity(pityCategory) {
     //pity category applies to both 5 and 6 star weapons
@@ -222,13 +222,13 @@ export class WeaponBanner extends Banner{
     if(`Select` !== this.rateUpSelection && this.rateUpSelection && getSelectedRateUp){
       //rate up is not a lie
       console.log(`Rateup ✅, picking rate up selection ${this.rateUpSelection}`);
-      return database.pickPityDrop(true, pityCategory);
+      return this.pickPityDrop(pityCategory, true);
     }
     else if(`Select` !== this.rateUpSelection && this.rateUpSelection && !getSelectedRateUp){
       //rate up is a lie
-      let drop = this.pickPityDrop(false, pityCategory);
+      let drop = this.pickPityDrop(pityCategory, false);
       while(drop.name === this.rateUpSelection){
-        drop = this.pickPityDrop(false, pityCategory);
+        drop = this.pickPityDrop(pityCategory, false);
       }
       console.log(`Rateup ❌, picking ${drop.name} instead of ${this.rateUpSelection}`);
       return drop;
@@ -258,8 +258,9 @@ export class WeaponBanner extends Banner{
     option.text = `Select`;
     options.push(option.outerHTML);
     if(this.rateUpCategory){
-      for(const weaponObj of database.getReferenceTable(this.rateUpCategory)){
-        option.text = Object.keys(weaponObj)[0];
+      console.log(this.rateUpCategory);
+      for(const key in database.getReferenceTable(this.rateUpCategory)){
+        option.text = key;
         option.value = option.text;
         options.push(option.outerHTML);
       }

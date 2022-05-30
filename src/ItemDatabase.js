@@ -64,8 +64,8 @@ class ItemDatabase {
   getReferenceTable(category){
     return this.lookupTable[category].getReferenceTable();
   }
-  pickTargetedWeapon(isRateUp, rateUpSelection, category){
-    return this.this.lookupTable[category].pickTargetedWeapon(isRateUp, rateUpSelection, category);
+  pickTargetedWeapon(rateUpSelection, category, isRateUp){
+    return this.lookupTable[category].pickSpecificDrop(rateUpSelection, category, isRateUp);
   }
 }
 
