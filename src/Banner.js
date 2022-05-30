@@ -214,7 +214,7 @@ export class WeaponBanner extends Banner{
   pickPityDrop(isRateUp, pityCategory){
     //need to be generalized for both 5 star and 6 star weapons
     //the 6 star weapon array needs to be processed before returning
-    database.pickTargetedWeapon(isRateUp, this.rateUpSelection, pityCategory);
+    database.pickTargetedWeapon(this.rateUpSelection, pityCategory, isRateUp);
   }
   pickPity(pityCategory) {
     //pity category applies to both 5 and 6 star weapons
@@ -222,7 +222,7 @@ export class WeaponBanner extends Banner{
     if(`Select` !== this.rateUpSelection && this.rateUpSelection && getSelectedRateUp){
       //rate up is not a lie
       console.log(`Rateup ✅, picking rate up selection ${this.rateUpSelection}`);
-      return database.pickSpecificDrop(this.rateUpSelection, pityCategory);
+      return database.pickPityDrop(true, pityCategory);
     }
     else if(`Select` !== this.rateUpSelection && this.rateUpSelection && !getSelectedRateUp){
       //rate up is a lie
@@ -251,6 +251,23 @@ export class WeaponBanner extends Banner{
     if(this.currentFiveStarPity > this.fiveStarPity || this.currentSixStarPity > this.sixStarPity){
       alert(`Pity had a nuclear meltdown. Please take a screenshot of the page and create an issue.`);
     }
+  }
+  populateBannerTargetSelect(){
+    let options = [];
+    let option = document.createElement(`option`);
+    option.text = `Select`;
+    options.push(option.outerHTML);
+    if(this.rateUpCategory){
+      for(const weaponObj of database.getReferenceTable(this.rateUpCategory)){
+        option.text = Object.keys(weaponObj)[0];
+        option.value = option.text;
+        options.push(option.outerHTML);
+      }
+    }
+    const bannerTargetSelect = document.getElementById(`select-target`);
+    bannerTargetSelect.options.length = 0;
+    bannerTargetSelect.innerHTML = options.join('\n');
+    this.changeRateUpSelection({target: {value: bannerTargetSelect.value}});
   }
 }
 

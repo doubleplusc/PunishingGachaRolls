@@ -360,159 +360,111 @@ export const unitData = {
 };
 export const weaponData = {
   assetPath: './assets/weapons/',
-  sixStarWeapon: [
-    { 'Wolf Fang': ['WolfFang', 'BerserkFusion', 'Benediction', 'Gloomlight'] },
-    { 'Zero Scale': ['ZeroScale', 'BerserkFusion', 'Benediction', 'Gloomlight'] },
-    { 'Scion': ['Scion', 'HydroHeat', 'Sakura', 'Gloomlight'] },
-
-    {
-      'Lotus Berserker': [
+  sixStarWeapon: {
+    'Wolf Fang': ['WolfFang', 'BerserkFusion', 'Benediction', 'Gloomlight'],
+    'Zero Scale': ['ZeroScale', 'BerserkFusion', 'Benediction', 'Gloomlight'],
+    'Scion': ['Scion', 'HydroHeat', 'Sakura', 'Gloomlight'],
+    'Lotus Berserker': [
         'LotusBerserker',
         'SoulRipper',
         'Darkness',
         'KujiNoSada',
       ],
-    },
-    {
-      'Inverse Shadow': [
-        'InverseShadow',
-        'InverseChimera',
-        'BigKamui',
-        'KujiNoSada',
-      ],
-    },
-    { 'Sakura': ['Sakura', 'WolfFang', 'TypeZero', 'KujiNoSada'] },
-    {
-      'Crimson Birch': ['CrimsonBirch', 'HydroHeat', 'FusionDragon', 'KujiNoSada'],
-    },
-    { 'Sariel': ['Sariel', 'StElmo', 'Tonitrus', 'KujiNoSada'] },
-
-    { 'Type Zero': ['TypeZero', 'Ramiel', 'BerserkFusion', 'GuardianMount'] },
-    {
-      'Benediction': [
-        'Benediction',
-        'WolfFang',
-        'LotusBerserker',
-        'GuardianMount',
-      ],
-    },
-    { 'Dragon Wind': ['DragonWind', 'BigKamui', 'Ramiel', 'GuardianMount'] },
-
-    { 'Ramiel': ['Ramiel', 'LotusBerserker', 'SoulRipper', 'FalconE3320'] },
-    { 'Tonitrus': ['Tonitrus', 'FusionDragon', 'PurplePeony', 'FalconE3320'] },
-
-    {
-      'Inverse Chimera': [
-        'InverseChimera',
-        'InverseShadow',
-        'SoulRipper',
-        'LightningSpark',
-      ],
-    },
-    { 'Hydro Heat': ['HydroHeat', 'Darkness', 'SoulRipper', 'LightningSpark'] },
-
-    {
-      'Darkness': [
-        'Darkness',
-        'Benediction',
-        'InverseChimera',
-        'DynamoGreatsword',
-      ],
-    },
-    { 'Big Kamui': ['BigKamui', 'TypeZero', 'WolfFang', 'DynamoGreatsword'] },
-
-    {
-      'Berserk Fusion': [
-        'BerserkFusion',
-        'DragonWind',
-        'InverseShadow',
-        'MagmaPillar',
-      ],
-    },
-    {
-      'Fusion Dragon': [
-        'FusionDragon',
-        'DragonWind',
-        'InverseShadow',
-        'MagmaPillar',
-      ],
-    },
-
-    { 'Soul Ripper': ['SoulRipper', 'Darkness', 'TypeZero', 'StoneHeart'] },
-    { 'Peacemaker': ['Peacemaker', 'FusionDragon', 'HydroHeat', 'StoneHeart'] },
-
-    { 'Purple Peony': ['PurplePeony', 'BigKamui', 'Ramiel', 'FadedColor'] },
-    { 'St Elmo': ['StElmo', 'Peacemaker', 'Scion', 'FadedColor'] },
-    { 'Galatea': ['Galatea', 'Apollo', 'MistressOfTheWoods', 'FadedColor'] },
-
-    { 'Gungnir': ['Gungnir', 'Crimson Birch', 'ZeroScale', 'RL03CBlackSpike'] },
-
-    { 'Baji': ['Baji', 'Benediction', 'Tonitrus', 'WhiteQilin'] },
-
-    { 'Ozma': ['Ozma', 'Gungnir', 'PurplePeony', 'CrownLure'] },
-
-    { 'Auncel': ['Auncel', 'Peacemaker', 'CrimsonBirch', 'FA2DAP'] },
-
-    { 'Apollo': ['Apollo', 'Sariel', 'Gungnir', 'KalaType1Gunblade'] },
-
-    { 'Growl': ['Growl', 'StElmo', 'Ozma', 'Animus'] },
-
-    { 'Phoenix': ['Phoenix', 'Apollo', 'Baji', 'CrimsonKnight'] },
-
-    { 'Hestia': ['Hestia', 'Growl', 'Ozma', 'BipolarStar'] },
-
-    { 'Sarastro': ['Sarastro', 'Auncel', 'Durandel', 'NeopolitanSolo'] },
-
-    { 'Implosion': ['Implosion', 'Sarastro', 'Qinghe', 'Redshift'] },
-
-    { 'Silent Flash': ['SilentFlash', 'Baji', 'Hestia', 'DireCrusher'] },
-
-    // transcendant only weapons
-    { 'Thanatos': ['Thanatos', 'Peacemaker', 'Scion', 'Glimpse'] },
-
-    { 'Qinghe': ['Qinghe', 'Thanatos', 'Sariel', 'Guiyun'] },
-
-    {
-      'Mistress of the Woods': [
-        'MistressOfTheWoods',
-        'InverseChimera',
-        'Sakura',
-        'Odette',
-      ],
-    },
-
-    { 'Durandal': ['Durandal', 'Qinghe', 'MistressOfTheWoods', 'ComplexRoses'] },
-
-    { 'Boundless': ['Boundless', 'Thanatos', 'Phoenix', 'FrostRuler'] },
-
-    // Nier
-    {
-      'Virtuous Contract Kai': [
-        'VirtuousContractKai',
-        'Type4OLanceKai',
-        'CruelOathKai',
-        'VirtuousContract',
-      ],
-    },
-
-    {
-      'Type-4O Lance Kai': [
-        'Type4OLanceKai',
-        'VirtuousContractKai',
-        'CruelOathKai',
-        'Type4OLance',
-      ],
-    },
-
-    {
-      'Cruel Oath Kai': [
-        'CruelOathKai',
-        'VirtuousContractKai',
-        'Type4OLanceKai',
-        'CruelOath',
-      ],
-    },
-  ],
+    'Inverse Shadow': [
+      'InverseShadow',
+      'InverseChimera',
+      'BigKamui',
+      'KujiNoSada',
+    ],
+    'Sakura': ['Sakura', 'WolfFang', 'TypeZero', 'KujiNoSada'],
+    'Crimson Birch': ['CrimsonBirch', 'HydroHeat', 'FusionDragon', 'KujiNoSada'],
+    'Sariel': ['Sariel', 'StElmo', 'Tonitrus', 'KujiNoSada'],
+    'Type Zero': ['TypeZero', 'Ramiel', 'BerserkFusion', 'GuardianMount'],
+    'Benediction': [
+      'Benediction',
+      'WolfFang',
+      'LotusBerserker',
+      'GuardianMount',
+    ],
+    'Dragon Wind': ['DragonWind', 'BigKamui', 'Ramiel', 'GuardianMount'],
+    'Ramiel': ['Ramiel', 'LotusBerserker', 'SoulRipper', 'FalconE3320'],
+    'Tonitrus': ['Tonitrus', 'FusionDragon', 'PurplePeony', 'FalconE3320'],
+    'Inverse Chimera': [
+      'InverseChimera',
+      'InverseShadow',
+      'SoulRipper',
+      'LightningSpark',
+    ],
+    'Hydro Heat': ['HydroHeat', 'Darkness', 'SoulRipper', 'LightningSpark'],
+    'Darkness': [
+      'Darkness',
+      'Benediction',
+      'InverseChimera',
+      'DynamoGreatsword',
+    ],
+    'Big Kamui': ['BigKamui', 'TypeZero', 'WolfFang', 'DynamoGreatsword'],
+    'Berserk Fusion': [
+      'BerserkFusion',
+      'DragonWind',
+      'InverseShadow',
+      'MagmaPillar',
+    ],
+    'Fusion Dragon': [
+      'FusionDragon',
+      'DragonWind',
+      'InverseShadow',
+      'MagmaPillar',
+    ],
+    'Soul Ripper': ['SoulRipper', 'Darkness', 'TypeZero', 'StoneHeart'],
+    'Peacemaker': ['Peacemaker', 'FusionDragon', 'HydroHeat', 'StoneHeart'],
+    'Purple Peony': ['PurplePeony', 'BigKamui', 'Ramiel', 'FadedColor'],
+    'St Elmo': ['StElmo', 'Peacemaker', 'Scion', 'FadedColor'],
+    'Galatea': ['Galatea', 'Apollo', 'MistressOfTheWoods', 'FadedColor'],
+    'Gungnir': ['Gungnir', 'Crimson Birch', 'ZeroScale', 'RL03CBlackSpike'],
+    'Baji': ['Baji', 'Benediction', 'Tonitrus', 'WhiteQilin'],
+    'Ozma': ['Ozma', 'Gungnir', 'PurplePeony', 'CrownLure'],
+    'Auncel': ['Auncel', 'Peacemaker', 'CrimsonBirch', 'FA2DAP'],
+    'Apollo': ['Apollo', 'Sariel', 'Gungnir', 'KalaType1Gunblade'],
+    'Growl': ['Growl', 'StElmo', 'Ozma', 'Animus'],
+    'Phoenix': ['Phoenix', 'Apollo', 'Baji', 'CrimsonKnight'],
+    'Hestia': ['Hestia', 'Growl', 'Ozma', 'BipolarStar'],
+    'Sarastro': ['Sarastro', 'Auncel', 'Durandel', 'NeopolitanSolo'],
+    'Implosion': ['Implosion', 'Sarastro', 'Qinghe', 'Redshift'],
+    'Silent Flash': ['SilentFlash', 'Baji', 'Hestia', 'DireCrusher'],
+  // transcendant only weapons
+    'Thanatos': ['Thanatos', 'Peacemaker', 'Scion', 'Glimpse'],
+    'Qinghe': ['Qinghe', 'Thanatos', 'Sariel', 'Guiyun'],
+    'Mistress of the Woods': [
+      'MistressOfTheWoods',
+      'InverseChimera',
+      'Sakura',
+      'Odette',
+    ],
+    'Durandal': ['Durandal', 'Qinghe', 'MistressOfTheWoods', 'ComplexRoses'],
+  
+    'Boundless': ['Boundless', 'Thanatos', 'Phoenix', 'FrostRuler'],
+  
+  // Nier
+  
+    'Virtuous Contract Kai': [
+      'VirtuousContractKai',
+      'Type4OLanceKai',
+      'CruelOathKai',
+      'VirtuousContract',
+    ],
+    'Type-4O Lance Kai': [
+      'Type4OLanceKai',
+      'VirtuousContractKai',
+      'CruelOathKai',
+      'Type4OLance',
+    ],
+    'Cruel Oath Kai': [
+      'CruelOathKai',
+      'VirtuousContractKai',
+      'Type4OLanceKai',
+      'CruelOath',
+    ],
+  },
 
   fiveStarWeapon: [
     'Gloomlight',
