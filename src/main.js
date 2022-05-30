@@ -1,18 +1,20 @@
-import { unitData, bannerData, weaponData} from "./data.js";
-import { Banner, ConstructBanner, TranscendantBanner, WeaponBanner } from "./Banner.js";
+import {unitData, bannerData, weaponData} from "./data.js";
+import {Banner, ConstructBanner, TranscendantBanner, WeaponBanner} from "./Banner.js";
 const bannerSelect = document.getElementById(`select-banner`);
 const bannerTargetSelect = document.getElementById(`select-target`);
 let pityCounter = document.getElementById(`pityCounter`);
 const roll10Button = document.getElementById(`roll10`);
 
-chance = new Chance();
 const bannerLookup = {
   baseMember: ConstructBanner,
   baseWeapon: WeaponBanner,
   themedConstruct: ConstructBanner,
+  fateArrival: ConstructBanner,
   targetWeapon: WeaponBanner,
   transcendant: TranscendantBanner,
 };
+
+chance = new Chance();
 const bannerTable = new Map();
 for(let bannerType of bannerSelect.options){
   let val = bannerType.value;

@@ -40,7 +40,9 @@ export class Banner {
     this.fiveStarPityType = bannerData[this.bannerType].fiveStarPityType;
     this.sixStarPityType = bannerData[this.bannerType].sixStarPityType;
   }
-
+  updatePityDisplay(){
+    pityCounter.innerText = `Pity: ${this.currentFiveStarPity} / ${this.currentSixStarPity}`;
+  }
   roll10() {
     let parent = document.createElement(`div`);
     for (let ind = 1; ind <= 10; ind += 1) {
@@ -57,7 +59,7 @@ export class Banner {
     this.currentRolls = parent;
     let domParent = document.querySelector(`.parent2`);
     domParent.replaceChildren(...parent.childNodes);
-    pityCounter.innerText = `Pity: ${this.currentFiveStarPity} / ${this.currentSixStarPity}`;
+    this.updatePityDisplay();
   }
   checkPity(drop, category){
     //need to override for weapon and transcendant banners
@@ -72,11 +74,14 @@ export class Banner {
       alert(`Pity had a nuclear meltdown. Please take a screenshot of the page and create an issue.`);
     }
   }
+  incrementPity(){
+    this.currentFiveStarPity++;
+    this.currentSixStarPity++;
+  }
   roll1() {
     let drop;
     let category;
-    this.currentFiveStarPity++;
-    this.currentSixStarPity++;
+    this.incrementPity();
     //need six star pity check first
     //otherwise, can trigger edge case of hitting 5 star pity at 60, giving A construct instead of S construct
     if(this.currentSixStarPity === this.sixStarPity){
@@ -133,10 +138,8 @@ export class Banner {
     }
     else if(`Select` !== this.rateUpSelection && this.rateUpSelection && !getSelectedRateUp){
       //rate up is a lie
-      //let drop = database.pickOneFromCategory(pityCategory);
       let drop = this.pickPityDrop(pityCategory);
       while(drop.name === this.rateUpSelection){
-        //drop = database.pickOneFromCategory(pityCategory);
         drop = this.pickPityDrop(pityCategory);
       }
       console.log(`Rateup ❌, picking ${drop.name} instead of ${this.rateUpSelection}`);
@@ -148,12 +151,10 @@ export class Banner {
       return database.pickOneFromCategory(pityCategory);
     }
   }
-
   clearStats() {
     this.currentSixStarPity = 0;
     this.currentFiveStarPity = 0;
   }
-
   changeRateUpSelection({target: {value: selection}}) {
     let choiceImage = document.getElementById(`select-target-image`);
     this.rateUpSelection = selection;
@@ -171,7 +172,7 @@ export class Banner {
     const bannerTargetSelect = document.getElementById(`select-target`);
     this.targetSelectListener = this.changeRateUpSelection.bind(this);
     bannerTargetSelect.addEventListener(`change`, this.targetSelectListener); //https://stackoverflow.com/questions/11565471/removing-event-listener-which-was-added-with-bind
-    pityCounter.innerText = `Pity: ${this.currentFiveStarPity} / ${this.currentSixStarPity}`;
+    this.updatePityDisplay();
     this.populateBannerTargetSelect();
 
   }
@@ -275,5 +276,21 @@ export class WeaponBanner extends Banner{
 export class TranscendantBanner extends Banner{
   constructor(bannerType){
     super(bannerType);
+    this.currentFiveStarPity = -1;
+  }
+  incrementPity(){
+    this.currentSixStarPity++;
+  }
+  checkPity(drop, category){
+    //need to override for weapon and transcendant banners
+    if(`transcendant` === category){
+      this.currentSixStarPity = 0;
+    }
+    if(this.currentSixStarPity > this.sixStarPity){
+      alert(`Pity had a nuclear meltdown. Please take a screenshot of the page and create an issue.`);
+    }
+  }
+  updatePityDisplay(){
+    pityCounter.innerText = `Pity: ${this.currentSixStarPity}`;
   }
 }

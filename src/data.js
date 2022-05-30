@@ -13,6 +13,15 @@ export const bannerData = {
     fiveStarPityType: 'aConstruct',
     sixStarPityType: 'sConstruct',
     rateUpCategory: 'sConstruct',
+    rateUpChance: 100,
+    fiveStarPity: 10,
+    sixStarPity: 60,
+  },
+  fateArrival: {
+    name: 'Fate Arrival',
+    fiveStarPityType: 'aConstruct',
+    sixStarPityType: 'sConstruct',
+    rateUpCategory: 'sConstruct',
     rateUpChance: 80,
     fiveStarPity: 10,
     sixStarPity: 60,
@@ -39,6 +48,7 @@ export const bannerData = {
     sixStarPityType: 'transcendant',
     rateUpCategory: 'transcendant',
     rateUpChance: 80,
+    sixStarPity: 10,
   },
 };
 export const dropTables = {
@@ -58,6 +68,21 @@ export const dropTables = {
     ],
   },
   themedConstruct: {
+    //we need the 2 0 rates at the end or the lookup table for B and A constructs won't be created
+    rates: [0.5, 13.95, 22.11, 28.39, 14.42, 4.81, 14.42, 0, 0],
+    items: [
+      'sConstruct',
+      'bOrAConstruct',
+      'constructShard',
+      'fourStarEquipment',
+      'overclock',
+      'exp',
+      'cogs',
+      'bConstruct',
+      'aConstruct'
+    ],
+  },
+  fateArrival: {
     //we need the 2 0 rates at the end or the lookup table for B and A constructs won't be created
     rates: [0.5, 13.95, 22.11, 28.39, 14.42, 4.81, 14.42, 0, 0],
     items: [
@@ -333,7 +358,7 @@ export const unitData = {
     },
     {
       name: 'Qu',
-      frame: 'Peafowl',
+      frame: 'Pavo',
       rank: 'Transcendant',
     },
     {
