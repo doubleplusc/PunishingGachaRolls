@@ -19,17 +19,18 @@ for(let bannerType of bannerSelect.options){
   bannerTable.set(val, new (bannerLookup[val])(val));
 }
 
-//let currentBanner = bannerTable.get(bannerSelect.value);
-let currentBanner = bannerTable.get(`baseWeapon`);
-console.log(currentBanner);
+let currentBanner = bannerTable.get(bannerSelect.value);
 bannerSelect.addEventListener(`change`, changeBannerType);
-bannerTargetSelect.addEventListener(`change`, currentBanner.changeRateUpSelection.bind(currentBanner));
+//bannerTargetSelect.addEventListener(`change`, currentBanner.changeRateUpSelection.bind(currentBanner));
+currentBanner.switchIn();
 roll10Button.addEventListener(`click`, roll10OfBanner);
 
 currentBanner.populateBannerTargetSelect();
 
 function changeBannerType(e){
-
+  currentBanner.switchOut();
+  currentBanner = bannerTable.get(e.target.value);
+  currentBanner.switchIn();
 }
 
 //also shift this to Banner

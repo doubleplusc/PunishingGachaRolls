@@ -80,13 +80,11 @@ export class Banner {
     //need six star pity check first
     //otherwise, can trigger edge case of hitting 5 star pity at 60, giving A construct instead of S construct
     if(this.currentSixStarPity === this.sixStarPity){
-      //drop = database.pickOneFromCategory(this.sixStarPityType);
       console.log(`six star pity reached`);
       drop = this.pickPity(this.sixStarPityType);
       category = this.sixStarPityType;
     }
     else if(this.currentFiveStarPity === this.fiveStarPity){
-      //drop = database.pickOneFromCategory(this.fiveStarPityType);
       console.log(`five star pity reached`);
       drop = this.pickPity(this.fiveStarPityType);
       category = this.fiveStarPityType;
@@ -117,7 +115,7 @@ export class Banner {
     let random = chance.natural({max: 100});
     return random <= this.rateUpPercent;
   }
-  pickPityDrop(){
+  pickPityDrop(isRateUp, pityCategory){
     //weapon banner must override to deal with offrates
     return database.pickOneFromCategory(pityCategory);
   }
@@ -163,13 +161,27 @@ export class Banner {
       choiceImage.setAttribute(`src`, `${database.pickSpecificDrop(selection, this.rateUpCategory).assetPath}`);
       choiceImage.style.opacity = 100; // there has to be a smarter way to hide the picture when the choice is select?
     } else {
-      choiceImage.setAttribute(`src`, `${database.pickSpecificDrop(selection, this.rateUpCategory).assetPath}`);
+      choiceImage.setAttribute(`src`, ``);
       choiceImage.style.opacity = 0;
     }
   }
+  switchIn(){
+    //add event listeners, populateBannerTargetSelect if there are any, update pity display
+    //future nice to do is to restore "history" of the last 10 pulls on this banner
+    const bannerTargetSelect = document.getElementById(`select-target`);
+    this.targetSelectListener = this.changeRateUpSelection.bind(this);
+    bannerTargetSelect.addEventListener(`change`, this.targetSelectListener); //https://stackoverflow.com/questions/11565471/removing-event-listener-which-was-added-with-bind
+    pityCounter.innerText = `Pity: ${this.currentFiveStarPity} / ${this.currentSixStarPity}`;
+    this.populateBannerTargetSelect();
 
+  }
+  switchOut(){
+    //remove event listeners
+    const bannerSelect = document.getElementById(`select-banner`);
+    const bannerTargetSelect = document.getElementById(`select-target`);
+    bannerTargetSelect.removeEventListener(`change`, this.targetSelectListener);
+  }
   populateBannerTargetSelect(){
-    console.log(this.rateUpCategory);
     let options = [];
     let option = document.createElement(`option`);
     option.text = `Select`;
@@ -182,7 +194,9 @@ export class Banner {
       }
     }
     const bannerTargetSelect = document.getElementById(`select-target`);
-    bannerTargetSelect.insertAdjacentHTML(`beforeEnd`, options.join(`\n`));
+    bannerTargetSelect.options.length = 0;
+    bannerTargetSelect.innerHTML = options.join('\n');
+    this.changeRateUpSelection({target: {value: bannerTargetSelect.value}});
   }
   
 }
