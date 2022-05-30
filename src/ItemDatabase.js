@@ -54,9 +54,9 @@ class ItemDatabase {
       console.log(category, err);
     }
   }
-  pickSpecificDrop(selection, category) {
+  pickSpecificDrop(selection, category, isRateUp = true) {
     try{
-      return this.lookupTable[category].pickSpecificDrop(selection);
+      return this.lookupTable[category].pickSpecificDrop(selection, category, isRateUp);
     } catch(err){
       console.log(category, err);
     }

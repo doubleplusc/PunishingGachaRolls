@@ -24,7 +24,7 @@ class BaseSelector{
     let drop = this.pick();
     return this.packReturnObject(drop);
   }
-  pickSpecificDrop(selection){
+  pickSpecificDrop(selection, category, isRateUp){
     let drop = this.getReferenceTable().find(obj => obj.frame === selection);
     return this.packReturnObject(drop);
   }
@@ -79,16 +79,14 @@ export class WeaponSelector extends BaseSelector{
   }
   packReturnObject(drop){
     if(`sixStarWeapon` === this.category){
-      for(const [key, val] of Object.entries(drop)){
-        drop = drop[key][0];
-      }
+      drop = this.getReferenceTable()[drop][0];
     }
     console.log(`WeaponSelector returning object ${drop} path ${this.dataTable.assetPath}${drop}.png}`);
     return { name: drop, assetPath: `${this.dataTable.assetPath}${drop}.png` };
   }
-  pickSpecificDrop(isRateUp, rateUpSelection, category){
+  pickSpecificDrop(selection, category, isRateUp){
     //only used in targeted weapon banner for 5 and 6 star weapon drops
-    let drop = this.getReferenceTable[rateUpSelection];
+    let drop = this.getReferenceTable()[selection];
     if(`fiveStarWeapon` === category){
       drop = drop[3];
     }
@@ -97,6 +95,14 @@ export class WeaponSelector extends BaseSelector{
     }
     console.log(`WeaponSelector returning object ${drop} path ${this.dataTable.assetPath}${drop}.png}`);
     return { name: drop, assetPath: `${this.dataTable.assetPath}${drop}.png` };
+  }
+  pick(){
+    if(`sixStarWeapon` === this.category){
+      return chance.pickone(Object.keys(this.getReferenceTable()));
+    }
+    else{
+      return super.pick();
+    }
   }
 }
 
