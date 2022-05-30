@@ -121,7 +121,7 @@ export class Banner {
   }
   pickPity(pityCategory) {
     //don't do rate up calculations if it's not the same category. Prevents A selections from stifling S pity drops
-    if(pityCategory !== this.rateUpCategory && `bOrAConstruct` !== pityCategory){
+    if(pityCategory !== this.rateUpCategory && !(`bOrAConstruct` === pityCategory && `aConstruct` === this.rateUpCategory)){
       console.log(`${pityCategory} does not have rate up, skip`);
       return database.pickOneFromCategory(pityCategory); 
     }

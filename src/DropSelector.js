@@ -15,7 +15,11 @@ class BaseSelector{
     return this.dataTable[category];
   }
   packReturnObject(drop){
-    return { name: drop.name, assetPath: `${this.dataTable.assetPath}${drop.name}.png`, rank: drop.rank };
+    try{
+      return { name: drop.name, assetPath: `${this.dataTable.assetPath}${drop.name}.png`, rank: drop.rank };
+    } catch(err){
+      console.log(category, err);
+    }
   }
   pick(){
     return chance.pickone(this.getReferenceTable());
