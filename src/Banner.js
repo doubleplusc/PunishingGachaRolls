@@ -134,10 +134,10 @@ export class Banner {
     else if(`Select` !== this.rateUpSelection && this.rateUpSelection && !getSelectedRateUp){
       //rate up is a lie
       //let drop = database.pickOneFromCategory(pityCategory);
-      let drop = this.pickPityDrop(false, pityCategory);
+      let drop = this.pickPityDrop(pityCategory);
       while(drop.name === this.rateUpSelection){
         //drop = database.pickOneFromCategory(pityCategory);
-        drop = this.pickPityDrop(false, pityCategory);
+        drop = this.pickPityDrop(pityCategory);
       }
       console.log(`Rateup ❌, picking ${drop.name} instead of ${this.rateUpSelection}`);
       return drop;
