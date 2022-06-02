@@ -9,7 +9,7 @@
   --primary-inverse: #FFF;
 } */
 
-h1 {
+h1, p {
   --typography-spacing-vertical: 1rem;
 }
 
@@ -28,6 +28,7 @@ h1 {
   grid-column-gap: 0px;
   grid-row-gap: 10px;
   width: 570px;
+  margin-bottom: 1rem;
 }
   
 .div1 { grid-area: 1 / 1 / 2 / 2; }

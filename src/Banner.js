@@ -41,7 +41,10 @@ export class Banner {
     this.sixStarPityType = bannerData[this.bannerType].sixStarPityType;
   }
   updatePityDisplay(){
-    pityCounter.innerText = `(${this.rateUpPercent}% rateup) Pity: ${this.currentFiveStarPity} / ${this.currentSixStarPity}`;
+    pityCounter.innerText =
+      `${this.rateUpPercent}% rateup
+      Five star pity: ${this.currentFiveStarPity} / ${this.fiveStarPity}
+      Six star pity: ${this.currentSixStarPity} / ${this.sixStarPity}`;
   }
   roll10(e) {
     e.preventDefault();
@@ -326,6 +329,8 @@ export class TranscendantBanner extends Banner{
     }
   }
   updatePityDisplay(){
-    pityCounter.innerText = `(${this.rateUpPercent}% rateup) Pity: ${this.currentSixStarPity}`;
+    pityCounter.innerText = 
+      `${this.rateUpPercent}% rateup
+      Transcendant pity: ${this.currentSixStarPity} / ${this.sixStarPity}`;
   }
 }
