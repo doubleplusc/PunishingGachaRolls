@@ -481,7 +481,7 @@ export const weaponData = {
     'Growl': ['Growl', 'St Elmo', 'Ozma', 'Animus'],
     'Phoenix': ['Phoenix', 'Apollo', 'Baji', 'CrimsonKnight'],
     'Hestia': ['Hestia', 'Growl', 'Ozma', 'BipolarStar'],
-    'Sarastro': ['Sarastro', 'Auncel', 'Durandel', 'NeopolitanSolo'],
+    'Sarastro': ['Sarastro', 'Auncel', 'Durandal', 'NeopolitanSolo'],
     'Implosion': ['Implosion', 'Sarastro', 'Qinghe', 'Redshift'],
     'Silent Flash': ['SilentFlash', 'Baji', 'Hestia', 'DireCrusher'],
   // transcendant only weapons
