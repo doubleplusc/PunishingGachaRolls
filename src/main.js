@@ -7,11 +7,12 @@ const roll10Button = document.getElementById(`roll10`);
 
 const bannerLookup = {
   baseMember: ConstructBanner,
-  baseWeapon: WeaponBanner,
   themedConstruct: ConstructBanner,
   fateArrival: ConstructBanner,
-  targetWeapon: WeaponBanner,
   transcendant: TranscendantBanner,
+  baseWeapon: WeaponBanner,
+  targetWeapon: WeaponBanner,
+  nierCollab: ConstructBanner,
 };
 
 chance = new Chance();
@@ -23,11 +24,7 @@ for(let bannerType of bannerSelect.options){
 
 let currentBanner = bannerTable.get(bannerSelect.value);
 bannerSelect.addEventListener(`change`, changeBannerType);
-//bannerTargetSelect.addEventListener(`change`, currentBanner.changeRateUpSelection.bind(currentBanner));
 currentBanner.switchIn();
-roll10Button.addEventListener(`click`, roll10OfBanner);
-
-currentBanner.populateBannerTargetSelect();
 
 function changeBannerType(e){
   currentBanner.switchOut();
@@ -35,9 +32,4 @@ function changeBannerType(e){
   currentBanner.switchIn();
 }
 
-//also shift this to Banner
-function roll10OfBanner(e) {
-  e.preventDefault();
-  currentBanner.roll10();
-}
 

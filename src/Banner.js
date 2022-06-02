@@ -43,7 +43,8 @@ export class Banner {
   updatePityDisplay(){
     pityCounter.innerText = `Pity: ${this.currentFiveStarPity} / ${this.currentSixStarPity}`;
   }
-  roll10() {
+  roll10(e) {
+    e.preventDefault();
     let parent = document.createElement(`div`);
     for (let ind = 1; ind <= 10; ind += 1) {
       // use a map on currentRolls with roll1
@@ -151,9 +152,11 @@ export class Banner {
       return database.pickOneFromCategory(pityCategory);
     }
   }
-  clearStats() {
+  clearStats(e) {
+    e.preventDefault();
     this.currentSixStarPity = 0;
     this.currentFiveStarPity = 0;
+    this.updatePityDisplay();
   }
   changeRateUpSelection({target: {value: selection}}) {
     let choiceImage = document.getElementById(`select-target-image`);
@@ -169,9 +172,22 @@ export class Banner {
   switchIn(){
     //add event listeners, populateBannerTargetSelect if there are any, update pity display
     //future nice to do is to restore "history" of the last 10 pulls on this banner
+    //methods as event listeners need to add .bind(this) and save a reference https://stackoverflow.com/questions/11565471/removing-event-listener-which-was-added-with-bind
+    //banner rate up selection
     const bannerTargetSelect = document.getElementById(`select-target`);
-    this.targetSelectListener = this.changeRateUpSelection.bind(this);
-    bannerTargetSelect.addEventListener(`change`, this.targetSelectListener); //https://stackoverflow.com/questions/11565471/removing-event-listener-which-was-added-with-bind
+    this.targetSelectListener = this.changeRateUpSelection;
+    bannerTargetSelect.addEventListener(`change`, this.targetSelectListener.bind(this));
+
+    //clear stats
+    const clearStatsButton = document.getElementById(`clearStats`);
+    this.clearStatsListener = this.clearStats;
+    clearStatsButton.addEventListener(`click`, this.clearStatsListener.bind(this));
+
+    //roll 10
+    const roll10Button = document.getElementById(`roll10`);
+    this.roll10Listener = this.roll10;
+    roll10Button.addEventListener(`click`, this.roll10Listener.bind(this));
+
     this.updatePityDisplay();
     this.populateBannerTargetSelect();
 

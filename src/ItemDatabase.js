@@ -15,6 +15,7 @@ class ItemDatabase {
       case `aConstruct`:
       case `sConstruct`:
       case `transcendant`:
+      case `nierConstruct`:
         return ConstructSelector;
       case `sixStarWeapon`:
       case `fiveStarWeapon`:

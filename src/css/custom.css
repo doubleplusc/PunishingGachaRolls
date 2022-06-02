@@ -30,8 +30,8 @@
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  width: 600px;
+  grid-row-gap: 10px;
+  width: 570px;
 }
   
 .div1 { grid-area: 1 / 1 / 2 / 2; }
@@ -70,7 +70,7 @@
   border-color: #ff8d1c;
 }
 
-.sConstruct, .sixStarWeapon, .transcendant {
+.sConstruct, .sixStarWeapon, .transcendant, .nierConstruct {
   border-color: #fb5824;
 }
 

@@ -50,6 +50,15 @@ export const bannerData = {
     rateUpChance: 80,
     sixStarPity: 10,
   },
+  nierCollab: {
+    name: 'Nier Collab',
+    fiveStarPityType: 'aConstruct',
+    sixStarPityType: 'nierConstruct',
+    rateUpCategory: 'nierConstruct',
+    rateUpChance: 100,
+    fiveStarPity: 10,
+    sixStarPity: 60,
+  },
 };
 export const dropTables = {
   baseMember: {
@@ -127,9 +136,20 @@ export const dropTables = {
     rates: [5, 28.21, 26.45, 6.44, 26.45],
     items: ['transcendant', 'fourStarEquipment', 'overclock', 'exp', 'cogs'],
   },
-  test: {
-    rates: [1],
-    items: ['constructShard'],
+  nierCollab: {
+    //we need the 2 0 rates at the end or the lookup table for B and A constructs won't be created
+    rates: [0.5, 13.95, 22.11, 28.39, 14.42, 4.81, 14.42, 0, 0],
+    items: [
+      'nierConstruct',
+      'bOrAConstruct',
+      'constructShard',
+      'fourStarEquipment',
+      'overclock',
+      'exp',
+      'cogs',
+      'bConstruct',
+      'aConstruct'
+    ],
   },
 };
 export const itemData = {
@@ -305,21 +325,6 @@ export const unitData = {
       rank: 'S',
     },
     {
-      name: '2B',
-      frame: '2B',
-      rank: 'S',
-    },
-    {
-      name: '9S',
-      frame: '9S',
-      rank: 'S',
-    },
-    {
-      name: 'A2',
-      frame: 'A2',
-      rank: 'S',
-    },
-    {
       name: 'Chrome',
       frame: 'Glory',
       rank: 'S',
@@ -380,6 +385,23 @@ export const unitData = {
       name: 'Haicma',
       frame: 'VeiledStar',
       rank: 'Transcendant',
+    },
+  ],
+  nierConstruct: [
+    {
+      name: '2B',
+      frame: '2B',
+      rank: 'S',
+    },
+    {
+      name: '9S',
+      frame: '9S',
+      rank: 'S',
+    },
+    {
+      name: 'A2',
+      frame: 'A2',
+      rank: 'S',
     },
   ],
 };
