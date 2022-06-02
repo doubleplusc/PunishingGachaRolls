@@ -9,6 +9,10 @@
   --primary-inverse: #FFF;
 } */
 
+h1 {
+  --typography-spacing-vertical: 1rem;
+}
+
 .divSelect { grid-area: 1 / 1 / 2 / 2; }
 .divSelectImage { grid-area: 1 / 2 / 2 / 3; }
 
