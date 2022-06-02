@@ -74,6 +74,13 @@ export class ConstructShardSelector extends ConstructSelector{
     //some banners need to override this to return its own custom array
     return this.list;
   }
+  packReturnObject(drop){
+    try{
+      return { name: drop.name, assetPath: `${this.dataTable.assetPath}shards/InverShard${drop.frame}.png`, rank: drop.rank };
+    } catch(err){
+      console.log(category, err);
+    }
+  }
 }
 
 export class WeaponSelector extends BaseSelector{

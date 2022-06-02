@@ -1,3 +1,14 @@
+/* Blue-grey Light scheme (Default) */
+/* Can be forced with data-theme="light" */
+/* [data-theme="light"],
+:root:not([data-theme="dark"]) {
+  --background-color: #1c1c1c;
+  --primary: #546e7a;
+  --primary-hover: #455a64;
+  --primary-focus: rgba(84, 110, 122, 0.125);
+  --primary-inverse: #FFF;
+} */
+
 .parent {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -9,13 +20,18 @@
 .divSelect { grid-area: 1 / 1 / 2 / 2; }
 .divSelectImage { grid-area: 1 / 2 / 2 / 3; }
 
+#select-target-image{
+  height: 75px;
+  width: 75px;
+}
+
 .parent2 {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  width: 50%;
+  width: 600px;
 }
   
 .div1 { grid-area: 1 / 1 / 2 / 2; }
@@ -31,7 +47,11 @@
 
 .itemDisplay {
   border: 0.3rem solid;
-  margin: 0.38rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  height: 100px;
+  width: 100px;
+  background-color: #3a3a3a;
 }
 
 .twoStarWeapon {
@@ -54,21 +74,22 @@
   border-color: #fb5824;
 }
 
-img.constructShard {
-  /* filter: sepia(100) brightness(0.5); */
-  background-size: cover;
-	background-position: center;
-  background-blend-mode: difference;
-  background-position: calc(50% - 1px) calc(50% - 1px), calc(50% + 1px) calc(50% + 1px);
-  filter: brightness(1) invert(30%);
-  box-shadow: inset 0 0 0 1px black;
+@media only screen and (max-width: 500px) {
+  .parent2 {
+    width: 420px;
+  }
+  .itemDisplay {
+    height: 75px;
+    width: 75px;
+  }
 }
 
-@supports (filter: invert(1)) and (background-blend-mode: difference) {
-  .img.constructShard {
-    background-blend-mode: difference;
-    background-position: calc(50% - 1px) calc(50% - 1px), calc(50% + 1px) calc(50% + 1px);
-    filter: brightness(2) invert(1) grayscale(1);
-    box-shadow: inset 0 0 0 1px black;
+@media only screen and (max-width: 700px) {
+  .parent2 {
+    width: 500px;
+  }
+  .itemDisplay {
+    height: 80px;
+    width: 80px;
   }
 }
