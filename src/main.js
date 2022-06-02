@@ -8,7 +8,7 @@ const roll10Button = document.getElementById(`roll10`);
 const bannerLookup = {
   baseMember: ConstructBanner,
   themedConstruct: ConstructBanner,
-  fateArrival: ConstructBanner,
+  arrival: ConstructBanner,
   transcendant: TranscendantBanner,
   baseWeapon: WeaponBanner,
   targetWeapon: WeaponBanner,
