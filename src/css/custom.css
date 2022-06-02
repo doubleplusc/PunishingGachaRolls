@@ -9,18 +9,10 @@
   --primary-inverse: #FFF;
 } */
 
-.parent {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  }
-  
 .divSelect { grid-area: 1 / 1 / 2 / 2; }
 .divSelectImage { grid-area: 1 / 2 / 2 / 3; }
 
-#select-target-image{
+#select-target-image, #offrate1-image, #offrate2-image{
   height: 75px;
   width: 75px;
 }

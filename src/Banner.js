@@ -160,6 +160,8 @@ export class Banner {
   }
   changeRateUpSelection({target: {value: selection}}) {
     let choiceImage = document.getElementById(`select-target-image`);
+    const offrate1Img = document.getElementById(`offrate1-image`);
+    const offrate2Img = document.getElementById(`offrate2-image`);
     this.rateUpSelection = selection;
     if (`Select` !== selection) {
       choiceImage.setAttribute(`src`, `${database.pickSpecificDrop(selection, this.rateUpCategory).assetPath}`);
@@ -168,6 +170,8 @@ export class Banner {
       choiceImage.setAttribute(`src`, ``);
       choiceImage.style.opacity = 0;
     }
+    offrate1Img.style.opacity = 0;
+    offrate2Img.style.opacity = 0;
   }
   switchIn(){
     //add event listeners, populateBannerTargetSelect if there are any, update pity display
@@ -175,18 +179,18 @@ export class Banner {
     //methods as event listeners need to add .bind(this) and save a reference https://stackoverflow.com/questions/11565471/removing-event-listener-which-was-added-with-bind
     //banner rate up selection
     const bannerTargetSelect = document.getElementById(`select-target`);
-    this.targetSelectListener = this.changeRateUpSelection;
-    bannerTargetSelect.addEventListener(`change`, this.targetSelectListener.bind(this));
+    this.targetSelectListener = this.changeRateUpSelection.bind(this);
+    bannerTargetSelect.addEventListener(`change`, this.targetSelectListener);
 
     //clear stats
     const clearStatsButton = document.getElementById(`clearStats`);
-    this.clearStatsListener = this.clearStats;
-    clearStatsButton.addEventListener(`click`, this.clearStatsListener.bind(this));
+    this.clearStatsListener = this.clearStats.bind(this);
+    clearStatsButton.addEventListener(`click`, this.clearStatsListener);
 
     //roll 10
     const roll10Button = document.getElementById(`roll10`);
-    this.roll10Listener = this.roll10;
-    roll10Button.addEventListener(`click`, this.roll10Listener.bind(this));
+    this.roll10Listener = this.roll10.bind(this);
+    roll10Button.addEventListener(`click`, this.roll10Listener);
 
     this.updatePityDisplay();
     this.populateBannerTargetSelect();
@@ -194,9 +198,12 @@ export class Banner {
   }
   switchOut(){
     //remove event listeners
-    const bannerSelect = document.getElementById(`select-banner`);
     const bannerTargetSelect = document.getElementById(`select-target`);
+    const clearStatsButton = document.getElementById(`clearStats`);
+    const roll10Button = document.getElementById(`roll10`);
     bannerTargetSelect.removeEventListener(`change`, this.targetSelectListener);
+    clearStatsButton.removeEventListener(`click`, this.clearStatsListener);
+    roll10Button.removeEventListener(`click`, this.roll10Listener);
   }
   populateBannerTargetSelect(){
     let options = [];
@@ -275,7 +282,6 @@ export class WeaponBanner extends Banner{
     option.text = `Select`;
     options.push(option.outerHTML);
     if(this.rateUpCategory){
-      console.log(this.rateUpCategory);
       for(const key in database.getReferenceTable(this.rateUpCategory)){
         option.text = key;
         option.value = option.text;
@@ -286,6 +292,19 @@ export class WeaponBanner extends Banner{
     bannerTargetSelect.options.length = 0;
     bannerTargetSelect.innerHTML = options.join('\n');
     this.changeRateUpSelection({target: {value: bannerTargetSelect.value}});
+  }
+  changeRateUpSelection(e) {
+    super.changeRateUpSelection(e);
+    let {target: {value: selection}} = e;
+    if(`Select` !== selection){
+      const offrate1Img = document.getElementById(`offrate1-image`);
+      const offrate2Img = document.getElementById(`offrate2-image`);
+      const {offrate1: {assetPath: path1}, offrate2: {assetPath: path2}} = database.getOffratesForWeapon(selection, this.rateUpCategory);
+      offrate1Img.setAttribute(`src`, path1);
+      offrate2Img.setAttribute(`src`, path2);
+      offrate1Img.style.opacity = 100;
+      offrate2Img.style.opacity = 100;
+    }
   }
 }
 

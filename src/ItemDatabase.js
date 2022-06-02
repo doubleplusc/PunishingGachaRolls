@@ -68,6 +68,9 @@ class ItemDatabase {
   pickTargetedWeapon(rateUpSelection, category, isRateUp){
     return this.lookupTable[category].pickSpecificDrop(rateUpSelection, category, isRateUp);
   }
+  getOffratesForWeapon(selection, category){
+    return this.lookupTable[category].getOffratesForWeapon(selection, category);
+  }
 }
 
 export const database = new ItemDatabase();

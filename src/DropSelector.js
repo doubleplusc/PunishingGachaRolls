@@ -88,9 +88,12 @@ export class WeaponSelector extends BaseSelector{
     super(category);
     this.dataTable = weaponData;
   }
-  packReturnObject(drop){
+  packReturnObject(drop, index = 0){
     if(`sixStarWeapon` === this.category){
-      drop = this.getReferenceTable()[drop][0];
+      if(index !== 0){
+        drop = this.getReferenceTable(`sixStarWeapon`)[drop][index];
+      }
+      drop = this.getReferenceTable(`sixStarWeapon`)[drop][0];
     }
     return { name: drop, assetPath: `${this.dataTable.assetPath}${drop}.png` };
   }
@@ -117,7 +120,6 @@ export class WeaponSelector extends BaseSelector{
     else{
       drop = drop[0];
     }
-    //console.log(`WeaponSelector returning object ${drop} path ${this.dataTable.assetPath}${drop}.png}`);
     return { name: drop, assetPath: `${this.dataTable.assetPath}${drop}.png` };
   }
   pick(){
@@ -127,6 +129,10 @@ export class WeaponSelector extends BaseSelector{
     else{
       return super.pick();
     }
+  }
+  getOffratesForWeapon(selection, category){
+    let drop = this.getReferenceTable(`sixStarWeapon`)[selection];
+    return {offrate1: this.packReturnObject(selection, 1), offrate2: this.packReturnObject(selection, 2)};
   }
 }
 
