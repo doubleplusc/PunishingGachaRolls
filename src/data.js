@@ -17,6 +17,15 @@ export const bannerData = {
     fiveStarPity: 10,
     sixStarPity: 60,
   },
+  fateThemedConstruct: {
+    name: 'Fate Themed Construct',
+    fiveStarPityType: 'aConstruct',
+    sixStarPityType: 'sConstruct',
+    rateUpCategory: 'sConstruct',
+    rateUpChance: 100,
+    fiveStarPity: 10,
+    sixStarPity: 100, //actually random but we will put the highest limit here
+  },
   arrival: {
     name: 'arrival',
     fiveStarPityType: 'aConstruct',
@@ -25,6 +34,15 @@ export const bannerData = {
     rateUpChance: 70,
     fiveStarPity: 10,
     sixStarPity: 60,
+  },
+  fateArrival: {
+    name: 'fateArrival',
+    fiveStarPityType: 'aConstruct',
+    sixStarPityType: 'sConstruct',
+    rateUpCategory: 'sConstruct',
+    rateUpChance: 70,
+    fiveStarPity: 10,
+    sixStarPity: 100, //actually random but we will put the highest limit here
   },
   baseWeapon: {
     name: 'Base Weapon Research',
@@ -91,9 +109,41 @@ export const dropTables = {
       'aConstruct'
     ],
   },
+  fateThemedConstruct: {
+    //we need the 2 0 rates at the end or the lookup table for B and A constructs won't be created
+    //
+    rates: [1.5, 13.95, 22.11, 28.39, 14.42, 4.81, 14.42, 0, 0],
+    items: [
+      'sConstruct',
+      'bOrAConstruct',
+      'constructShard',
+      'fourStarEquipment',
+      'overclock',
+      'exp',
+      'cogs',
+      'bConstruct',
+      'aConstruct'
+    ],
+  },
   arrival: {
     //we need the 2 0 rates at the end or the lookup table for B and A constructs won't be created
     rates: [0.5, 13.95, 22.11, 28.39, 14.42, 4.81, 14.42, 0, 0],
+    items: [
+      'sConstruct',
+      'bOrAConstruct',
+      'constructShard',
+      'fourStarEquipment',
+      'overclock',
+      'exp',
+      'cogs',
+      'bConstruct',
+      'aConstruct'
+    ],
+  },
+  fateArrival: {
+    //we need the 2 0 rates at the end or the lookup table for B and A constructs won't be created
+    // 
+    rates: [1.5, 13.95, 22.11, 28.39, 14.42, 4.81, 14.42, 0, 0],
     items: [
       'sConstruct',
       'bOrAConstruct',

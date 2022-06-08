@@ -73,10 +73,14 @@ export class Banner {
     else if(drop.rank === `S` && `constructShard` !== category){
       this.currentFiveStarPity = 0;
       this.currentSixStarPity = 0;
+      this.generateFloatingPity(); //do nothing, only FloatingConstructPity has behavior
     }
     if(this.currentFiveStarPity > this.fiveStarPity || this.currentSixStarPity > this.sixStarPity){
       alert(`Pity had a nuclear meltdown. Please take a screenshot of the page and create an issue.`);
     }
+  }
+  generateFloatingPity(){
+    return;
   }
   incrementPity(){
     this.currentFiveStarPity++;
@@ -231,6 +235,23 @@ export class Banner {
 export class ConstructBanner extends Banner{
   constructor(bannerType){
     super(bannerType);
+  }
+}
+
+export class FloatingConstructBanner extends Banner{
+  constructor(bannerType){
+    super(bannerType);
+  }
+  parseData(){
+    super.parseData();
+    this.generateFloatingPity();
+  }
+  generateFloatingPity(){
+    this.sixStarPity = chance.integer({min: 80, max: 100});
+  }
+  updatePityDisplay(){
+    super.updatePityDisplay();
+    pityCounter.innerText = `Floating pity is not well-documented.\nIn-game gacha might have hidden mechanics.\nHeed simulation at your own risk!!\n\n` + pityCounter.innerText;
   }
 }
 

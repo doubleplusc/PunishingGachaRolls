@@ -1,5 +1,5 @@
 import {unitData, bannerData, weaponData} from "./data.js";
-import {Banner, ConstructBanner, TranscendantBanner, WeaponBanner} from "./Banner.js";
+import {Banner, ConstructBanner, FloatingConstructBanner, TranscendantBanner, WeaponBanner} from "./Banner.js";
 const bannerSelect = document.getElementById(`select-banner`);
 const bannerTargetSelect = document.getElementById(`select-target`);
 let pityCounter = document.getElementById(`pityCounter`);
@@ -8,7 +8,9 @@ const roll10Button = document.getElementById(`roll10`);
 const bannerLookup = {
   baseMember: ConstructBanner,
   themedConstruct: ConstructBanner,
+  fateThemedConstruct: FloatingConstructBanner,
   arrival: ConstructBanner,
+  fateArrival: FloatingConstructBanner,
   transcendant: TranscendantBanner,
   baseWeapon: WeaponBanner,
   targetWeapon: WeaponBanner,

@@ -1,0 +1,9 @@
+Banner.js - clean up the pick pity implementations. Need to play nice with both construct rateup and weapon rate up
+
+Add Banner subclasses
+
+Implement Banner factory
+
+Implement dropdown menu logic
+
+Display a seed on the page in case something goes wrong for reproducing bug
